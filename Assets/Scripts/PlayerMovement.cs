@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Header ("Movement")]
     public float moveSpeed = 5f;
     float horizontalMovement;
+    bool keyDown = false;
 
     [Header("Jumping")]
     public float jumpPower = 10f;
@@ -64,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("magnitude", rb.velocity.magnitude);
         animator.SetBool("Grounded", isGrounded);
         animator.SetBool("WallSlide", isWallSliding);
+        animator.SetBool("KeyDown(AorD)", keyDown);
 
     }
 
@@ -117,7 +119,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        horizontalMovement = context.ReadValue<Vector2>().x;
+        if (context.performed)
+        {
+            horizontalMovement = context.ReadValue<Vector2>().x;
+            keyDown = true;
+        }
+        else
+        {
+            horizontalMovement = context.ReadValue<Vector2>().x;
+            keyDown = false;
+        }
 
     }
 
