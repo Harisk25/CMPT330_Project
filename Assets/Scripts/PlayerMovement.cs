@@ -35,6 +35,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 wallCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask wallLayer;
 
+    [Header("EnemyCheck")]
+    public Transform enemyCheckPos;
+    public Vector2 enemyCheckSize = new Vector2(0.5f, 0.05f);
+    public LayerMask enemyLayer;
+    bool inContactWithEnemy;
+
     [Header("WallMovement")]
     public float wallSlideSpeed = 2f;
     bool isWallSliding;
@@ -54,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
         ProcessWallSlide();
         ProcessWallJump();
+        EnemyCheck();
+        Hit();
 
         if (!isWallJumping)
         {
@@ -157,14 +165,14 @@ public class PlayerMovement : MonoBehaviour
                 //Hold down jump button = full height
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                 jumpsRemaining--;
-                animator.SetTrigger("jump");
+                animator.SetTrigger("Jump");
             }
             else if (context.canceled && rb.velocity.y > 0)
             {
                 //Light tap of jump button = half the height
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
                 jumpsRemaining--;
-                animator.SetTrigger("jump");
+                animator.SetTrigger("Jump");
             }
         }
 
@@ -174,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
             wallJumpTimer = 0;
-            animator.SetTrigger("jump");
+            animator.SetTrigger("Jump");
             //Force a flip
             if (transform.localScale.x != wallJumpDirection)
             {
@@ -185,6 +193,14 @@ public class PlayerMovement : MonoBehaviour
             }
 
             Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); //Wall Jump will last 0.5 seconds and can jump again 0.6 seconds
+        }
+    }
+
+    private void Hit()
+    {
+        if (inContactWithEnemy == true)
+        {
+            Debug.Log("Player Getting Hit ");
         }
     }
     /*
@@ -210,6 +226,18 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.OverlapBox(wallCheckPos.position, wallCheckSize, 0, wallLayer);
     }
+
+    private void EnemyCheck()
+    {
+        if (Physics2D.OverlapBox(enemyCheckPos.position, enemyCheckSize, 0, enemyLayer))
+        {
+            inContactWithEnemy = true;
+        }
+        else
+        {
+            inContactWithEnemy = false;
+        }
+    }
     /*
      * Flip just flips the player sprite.
      */
@@ -234,6 +262,9 @@ public class PlayerMovement : MonoBehaviour
         //Wallcheck hit box
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
+        //Enemycheck hit box
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(enemyCheckPos.position, enemyCheckSize);
     }
 
 }
