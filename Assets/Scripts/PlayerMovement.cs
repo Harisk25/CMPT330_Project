@@ -52,6 +52,15 @@ public class PlayerMovement : MonoBehaviour
     float wallJumpTimer;
     public Vector2 wallJumpPower = new Vector2(5f, 10f);
 
+    [Header("Attack")]
+    bool isAttacking = true;
+    int attackCount = 0;
+    float attackTime = 0.4f;
+    float attackTimer;
+    float attackRestTime = 0.4f;
+    float attackRestTimer;
+
+
 
     // Update is called once per frame
     void Update()
@@ -61,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         ProcessWallSlide();
         ProcessWallJump();
         EnemyCheck();
+        processAttack();
         Hit();
 
         if (!isWallJumping)
@@ -74,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Grounded", isGrounded);
         animator.SetBool("WallSlide", isWallSliding);
         animator.SetBool("KeyDown(AorD)", keyDown);
+        Debug.Log(isAttacking);
 
     }
 
@@ -195,12 +206,75 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); //Wall Jump will last 0.5 seconds and can jump again 0.6 seconds
         }
     }
-
+    /*
+     * Hit checks if player is in contact with an enemy, if so player takes damage
+     * NOTE: WORK IN PROGRESS
+     */
     private void Hit()
     {
         if (inContactWithEnemy == true)
         {
             Debug.Log("Player Getting Hit ");
+        }
+    }
+
+    /*
+     * Attack is allows the player to attack, and triggers animation
+     * NOTE: HIT BOXES ARE WORK IN PROGRESS
+     */
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.performed) // key pressed
+        {
+            if (attackTimer <= 0f) // ensure attack timer is at 0 to trigger next animation
+            {
+                isAttacking = true;
+                attackRestTimer = attackRestTime; // set rest timer
+                attackCount++;
+                if (attackCount == 1) // animation 1
+                {
+                    attackTimer = attackTime;
+                    animator.SetTrigger("Attack1");
+                }
+                else if (attackCount == 2) // animation 2
+                {
+                    attackTimer = attackTime;
+                    animator.SetTrigger("Attack2");
+                }
+                else if (attackCount == 3) // animation 3
+                {
+                    attackTimer = attackTime;
+                    animator.SetTrigger("Attack3");
+                }
+            }
+            if (attackCount == 3) // after 3 attacks reset animation to 1
+                {
+                    attackCount = 0;
+                }
+        }
+        else if (context.canceled)
+        {
+            isAttacking = false;
+        }
+    }
+
+    /*
+     * processAttack insures attack animation is played out before player can attack again, sort of a timer
+     * to stop animation resets. 
+     */
+    private void processAttack()
+    {
+        if(attackTimer > 0f) // attack timer has started
+        {
+            attackTimer -= Time.deltaTime;
+        }
+        else if ( attackTimer <= 0f && isAttacking == false) // attack timer finished, and player hasnt attacked yet, start reset timer
+        {
+            attackRestTimer -= Time.deltaTime;
+        }
+        if (attackRestTimer <= 0f) // once reset timer at zero reset animation
+        {
+            attackCount = 0;
         }
     }
     /*
