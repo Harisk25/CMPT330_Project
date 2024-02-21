@@ -9,7 +9,14 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     bool isFacingRight = true;
 
-    [Header ("Movement")] //Header adds headers in unity to making sectiosn of  variables popout.
+    [Header ("Player Stats")] //Header adds headers in unity to making sectiosn of  variables popout.
+    public int playerHP = 4;
+    bool playerInvincible = false;
+    float playerInvincbleTimer;
+    float playerInvincbleTime = 0.5f;
+
+
+    [Header ("Movement")] 
     public float moveSpeed = 5f;
     float horizontalMovement;
     bool keyDown = false;
@@ -53,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 wallJumpPower = new Vector2(5f, 10f);
 
     [Header("Attack")]
-    bool isAttacking = true;
+    bool isAttacking = false;
     int attackCount = 0;
     float attackTime = 0.4f;
     float attackTimer;
@@ -71,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         ProcessWallJump();
         EnemyCheck();
         processAttack();
-        Hit();
+        GettingHit();
 
         if (!isWallJumping)
         {
@@ -84,8 +91,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Grounded", isGrounded);
         animator.SetBool("WallSlide", isWallSliding);
         animator.SetBool("KeyDown(AorD)", keyDown);
-        Debug.Log(isAttacking);
-
     }
 
     /*
@@ -105,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
             rb.gravityScale = baseGravity;
         }
     }
+    
     /*
      * ProcessWallSlide is the method that checks to see if the player is next to a wall while sliding.
      * If the player is besided a wall and is moving towards that wall while falling it will cause wall sliding and reduce fall speed
@@ -121,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
             isWallSliding = false;
         }
     }
+    
     /*
      * ProcessWallJump allows our player to jump after wall sliding. The player is unable to act (move in the x-axis) until a certian amount of time has passed.
      */
@@ -139,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
             wallJumpTimer -= Time.deltaTime;
         }
     }
+    
     /*
      * CancelWallJump is an invoke method that is invoked when a player performs a wall jump
      */
@@ -146,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isWallJumping = false;
     }
+    
     /*
      * Move is used to make the player move in the x-axis.
      */
@@ -163,6 +172,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+    
     /*
      * Jump is used to make our player jump under certain restrictions. Can jump multiple times with the increase in the max jump variable
      * Jump also preforms the wall jump.
@@ -206,21 +216,24 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); //Wall Jump will last 0.5 seconds and can jump again 0.6 seconds
         }
     }
+    
     /*
      * Hit checks if player is in contact with an enemy, if so player takes damage
      * NOTE: WORK IN PROGRESS
      */
-    private void Hit()
+    private void GettingHit()
     {
-        if (inContactWithEnemy == true)
+        if (inContactWithEnemy == true && playerInvincible == false)
         {
+            playerHP--;
+            playerInvincible = true;
+            playerInvincbleTimer = playerInvincbleTime;
             Debug.Log("Player Getting Hit ");
         }
     }
 
     /*
      * Attack is allows the player to attack, and triggers animation
-     * NOTE: HIT BOXES ARE WORK IN PROGRESS
      */
     public void Attack(InputAction.CallbackContext context)
     {
@@ -277,6 +290,7 @@ public class PlayerMovement : MonoBehaviour
             attackCount = 0;
         }
     }
+    
     /*
      * GroundCheck makes sure that the player is on the ground.
      * Used for checking if the player can jump.
@@ -293,6 +307,7 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
     }
+    
     /*
      * WallCheck makes sure we are touching a wall to preform a wall slide.
      */
@@ -300,7 +315,10 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.OverlapBox(wallCheckPos.position, wallCheckSize, 0, wallLayer);
     }
-
+    
+    /*
+     * EnemyCheck checks to see if player is colliding with an enemy
+     */
     private void EnemyCheck()
     {
         if (Physics2D.OverlapBox(enemyCheckPos.position, enemyCheckSize, 0, enemyLayer))
@@ -312,6 +330,7 @@ public class PlayerMovement : MonoBehaviour
             inContactWithEnemy = false;
         }
     }
+    
     /*
      * Flip just flips the player sprite.
      */
@@ -325,6 +344,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = ls;
         }
     }
+    
     /*
      * OnDrawGizmosSelected draws our GroundCheck and WallCheck hit boxes so we can see how big they are.
      */
