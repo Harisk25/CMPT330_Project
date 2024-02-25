@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public int playerHP = 4;
     bool playerInvincible = false;
     float playerInvincbleTimer;
-    float playerInvincbleTime = 0.5f;
+    public float playerInvincbleTime = 0.8f;
 
 
     [Header ("Movement")] 
@@ -77,8 +77,9 @@ public class PlayerMovement : MonoBehaviour
         ProcessWallSlide();
         ProcessWallJump();
         EnemyCheck();
-        processAttack();
+        ProcessAttack();
         GettingHit();
+        ProcessPlayerInvincble();
 
         if (!isWallJumping)
         {
@@ -145,6 +146,19 @@ public class PlayerMovement : MonoBehaviour
         {
             wallJumpTimer -= Time.deltaTime;
         }
+    }
+
+    private void ProcessPlayerInvincble()
+    {
+        if(playerInvincible == true && playerInvincbleTimer > 0f)
+        {
+            playerInvincbleTimer -= Time.deltaTime;
+        }
+        else if (playerInvincbleTimer <= 0f)
+        {
+            playerInvincible = false;
+        }
+
     }
     
     /*
@@ -275,7 +289,7 @@ public class PlayerMovement : MonoBehaviour
      * processAttack insures attack animation is played out before player can attack again, sort of a timer
      * to stop animation resets. 
      */
-    private void processAttack()
+    private void ProcessAttack()
     {
         if(attackTimer > 0f) // attack timer has started
         {
