@@ -147,7 +147,9 @@ public class PlayerMovement : MonoBehaviour
             wallJumpTimer -= Time.deltaTime;
         }
     }
-
+    /*
+     * ProcessPlayerInvincble makes it so that the player cant get hit for a few seconds after getting hit.
+     */
     private void ProcessPlayerInvincble()
     {
         if(playerInvincible == true && playerInvincbleTimer > 0f)
