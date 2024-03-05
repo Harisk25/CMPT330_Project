@@ -65,7 +65,7 @@ public class PlayerDetection : MonoBehaviour{
 	    }
 
 	    Gizmos.DrawCube((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize);
-	    Debug.Log("yes");
+	    //Debug.Log("yes");
 	}
 	    
     }
