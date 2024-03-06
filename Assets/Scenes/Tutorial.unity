@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -355,6 +355,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Sorcerer '
       objectReference: {fileID: 0}
+    - target: {fileID: 2382765257166908784, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_ForceSendLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_ForceReceiveLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3291763293700346786, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
       propertyPath: detectorSize.y
       value: 20
@@ -362,6 +390,22 @@ PrefabInstance:
     - target: {fileID: 3291763293700346786, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
       propertyPath: detectorOriginOffset.y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719686275490636191, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832092625266393959, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832092625266393959, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832092625266393959, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 767
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24972,7 +25016,7 @@ GameObject:
   - component: {fileID: 1172877235}
   m_Layer: 9
   m_Name: HitBox
-  m_TagString: Untagged
+  m_TagString: Slash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25004,7 +25048,7 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 328
