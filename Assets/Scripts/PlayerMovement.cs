@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator animator;
+    public CapsuleCollider2D hitBox;
     bool isFacingRight = true;
 
     [Header ("Player Stats")] //Header adds headers in unity to making sectiosn of  variables popout.
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     bool playerInvincible = false;
     float playerInvincbleTimer;
     public float playerInvincbleTime = 0.8f;
+    private bool isDead = false;
 
 
     [Header ("Movement")] 
@@ -72,19 +74,26 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessGravity();
-        GroundCheck();
-        ProcessWallSlide();
-        ProcessWallJump();
-        EnemyCheck();
-        ProcessAttack();
-        GettingHit();
-        ProcessPlayerInvincble();
-
-        if (!isWallJumping)
+        if (isDead == false)
         {
-            rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
-            Flip();
+            ProcessGravity();
+            GroundCheck();
+            ProcessWallSlide();
+            ProcessWallJump();
+            EnemyCheck();
+            ProcessAttack();
+            GettingHit();
+            ProcessPlayerInvincble();
+            if (!isWallJumping)
+            {
+                rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
+                Flip();
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, 0);
+            ProcessDeath();
         }
 
         animator.SetFloat("AirSpeedY", rb.velocity.y);
@@ -176,15 +185,18 @@ public class PlayerMovement : MonoBehaviour
      */
     public void Move(InputAction.CallbackContext context) 
     {
-        if (context.performed) //If statement needed to help fix animation issues when swithing from falling to idle animation.
+        if (isDead == false)
         {
-            horizontalMovement = context.ReadValue<Vector2>().x;
-            keyDown = true;
-        }
-        else
-        {
-            horizontalMovement = context.ReadValue<Vector2>().x;
-            keyDown = false;
+            if (context.performed) //If statement needed to help fix animation issues when swithing from falling to idle animation.
+            {
+                horizontalMovement = context.ReadValue<Vector2>().x;
+                keyDown = true;
+            }
+            else
+            {
+                horizontalMovement = context.ReadValue<Vector2>().x;
+                keyDown = false;
+            }
         }
 
     }
@@ -195,41 +207,44 @@ public class PlayerMovement : MonoBehaviour
      */
     public void Jump(InputAction.CallbackContext context)
     {
-        if (jumpsRemaining > 0) //Check to see if we have jumps remaining
+        if (isDead == false)
         {
-            if (context.performed)
+            if (jumpsRemaining > 0) //Check to see if we have jumps remaining
             {
-                //Hold down jump button = full height
-                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                jumpsRemaining--;
-                animator.SetTrigger("Jump");
-            }
-            else if (context.canceled && rb.velocity.y > 0)
-            {
-                //Light tap of jump button = half the height
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-                jumpsRemaining--;
-                animator.SetTrigger("Jump");
-            }
-        }
-
-        //Wall jump
-        if(context.performed && wallJumpTimer > 0f)
-        {
-            isWallJumping = true;
-            rb.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
-            wallJumpTimer = 0;
-            animator.SetTrigger("Jump");
-            //Force a flip
-            if (transform.localScale.x != wallJumpDirection)
-            {
-                isFacingRight = !isFacingRight;
-                Vector3 ls = transform.localScale;
-                ls.x *= -1f;
-                transform.localScale = ls;
+                if (context.performed)
+                {
+                    //Hold down jump button = full height
+                    rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                    jumpsRemaining--;
+                    animator.SetTrigger("Jump");
+                }
+                else if (context.canceled && rb.velocity.y > 0)
+                {
+                    //Light tap of jump button = half the height
+                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                    jumpsRemaining--;
+                    animator.SetTrigger("Jump");
+                }
             }
 
-            Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); //Wall Jump will last 0.5 seconds and can jump again 0.6 seconds
+            //Wall jump
+            if (context.performed && wallJumpTimer > 0f)
+            {
+                isWallJumping = true;
+                rb.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
+                wallJumpTimer = 0;
+                animator.SetTrigger("Jump");
+                //Force a flip
+                if (transform.localScale.x != wallJumpDirection)
+                {
+                    isFacingRight = !isFacingRight;
+                    Vector3 ls = transform.localScale;
+                    ls.x *= -1f;
+                    transform.localScale = ls;
+                }
+
+                Invoke(nameof(CancelWallJump), wallJumpTime + 0.4f); //Wall Jump will last 0.5 seconds and can jump again 0.6 seconds
+            }
         }
     }
     
@@ -242,9 +257,22 @@ public class PlayerMovement : MonoBehaviour
         if (inContactWithEnemy == true && playerInvincible == false)
         {
             playerHP--;
+            animator.SetTrigger("Hurt");
             playerInvincible = true;
             playerInvincbleTimer = playerInvincbleTime;
             Debug.Log("Player Getting Hit ");
+            if(playerHP <= 0)
+            {
+                animator.SetTrigger("Death");
+                isDead = true;
+            }
+        }
+    }
+    private void ProcessDeath()
+    {
+        if(isDead == true)
+        {
+            //Send to you died screen, have reset button
         }
     }
 
@@ -253,37 +281,42 @@ public class PlayerMovement : MonoBehaviour
      */
     public void Attack(InputAction.CallbackContext context)
     {
-        if (context.performed) // key pressed
+        if (isDead == false)
         {
-            if (attackTimer <= 0f) // ensure attack timer is at 0 to trigger next animation
+            if (context.performed) // key pressed
             {
-                isAttacking = true;
-                attackRestTimer = attackRestTime; // set rest timer
-                attackCount++;
-                if (attackCount == 1) // animation 1
+                if (attackTimer <= 0f) // ensure attack timer is at 0 to trigger next animation
                 {
-                    attackTimer = attackTime;
-                    animator.SetTrigger("Attack1");
+                    hitBox.enabled = true;
+                    isAttacking = true;
+                    attackRestTimer = attackRestTime; // set rest timer
+                    attackCount++;
+                    if (attackCount == 1) // animation 1
+                    {
+                        attackTimer = attackTime;
+                        animator.SetTrigger("Attack1");
+                    }
+                    else if (attackCount == 2) // animation 2
+                    {
+                        attackTimer = attackTime;
+                        animator.SetTrigger("Attack2");
+                    }
+                    else if (attackCount == 3) // animation 3
+                    {
+                        attackTimer = attackTime;
+                        animator.SetTrigger("Attack3");
+                    }
                 }
-                else if (attackCount == 2) // animation 2
-                {
-                    attackTimer = attackTime;
-                    animator.SetTrigger("Attack2");
-                }
-                else if (attackCount == 3) // animation 3
-                {
-                    attackTimer = attackTime;
-                    animator.SetTrigger("Attack3");
-                }
-            }
-            if (attackCount == 3) // after 3 attacks reset animation to 1
+                if (attackCount == 3) // after 3 attacks reset animation to 1
                 {
                     attackCount = 0;
                 }
-        }
-        else if (context.canceled)
-        {
-            isAttacking = false;
+            }
+            else if (context.canceled)
+            {
+                isAttacking = false;
+
+            }
         }
     }
 
@@ -300,10 +333,13 @@ public class PlayerMovement : MonoBehaviour
         else if ( attackTimer <= 0f && isAttacking == false) // attack timer finished, and player hasnt attacked yet, start reset timer
         {
             attackRestTimer -= Time.deltaTime;
+            hitBox.enabled = false;
+            
         }
         if (attackRestTimer <= 0f) // once reset timer at zero reset animation
         {
             attackCount = 0;
+            hitBox.enabled = false;
         }
     }
     
