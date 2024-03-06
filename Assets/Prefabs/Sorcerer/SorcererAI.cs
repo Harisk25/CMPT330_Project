@@ -3,13 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SorcererAI : MonoBehaviour{
+
+    PlayerDetection playerDetection;
+    private Animator sAnimator;
+    private SpriteRenderer spriteRenderer;
+    private BoxCollider2D hitBox;
+ 
+    private bool isHit = false;
     
-    void Start(){
-    
-		   
+
+    [Header ("Stats")]
+    public int health = 3;
+    public float invincibleTime = 0.7f;
+
+    void Awake(){
+	sAnimator = GetComponent<Animator>();
+	playerDetection = GetComponent<PlayerDetection>();
+	spriteRenderer = GetComponent<SpriteRenderer>();
+	hitBox = GetComponent<BoxCollider2D>();
+
     }
 
     void Update(){
+	setAnimation();
+	
 
     }
+
+    void setAnimation(){
+    	if(sAnimator != null){
+	    
+
+	    if(playerDetection.PlayerDetected){
+		if(playerDetection.DirectionToTarget.x < 0){
+		    spriteRenderer.flipX = true;
+		}
+		else{
+		    spriteRenderer.flipX = false;
+		}
+		if(sAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle")){
+		    sAnimator.SetTrigger("TrAttack");
+		}
+	    }
+	    
+
+	}
+    }
+    
+    void OnCollisionEnter2D(Collision2D other){
+	sAnimator.SetTrigger("TrHit");
+	health--;
+	Debug.Log("Enemy Hit");
+	if(health == 0){
+	    sAnimator.SetTrigger("TrDeath");
+	}
+
+    }
+
+    void EnemyDeath(){
+	Destroy(gameObject);
+    }
+
+    void SpawnProjectile(){}
 }

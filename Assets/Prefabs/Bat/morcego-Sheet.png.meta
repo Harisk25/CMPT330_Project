@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5321354949639e24b9979d589ade25d3
+guid: e0f6cca931cac6548966bba718d245cf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: skull_fireball_red-Sheet_0
+      name: morcego-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff28c5617a758ee4ea7d825a76aa97dd
-      internalID: 339906309
+      spriteID: 19f42f18aefc0544aaf21d37d878054f
+      internalID: 689571168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skull_fireball_red-Sheet_1
+      name: morcego-Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 200
         y: 0
-        width: 64
-        height: 64
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1846f8d4441b8394c8f2a29624c10b41
-      internalID: 896398247
+      spriteID: df92316b099580249855f922bbe766ad
+      internalID: 1299004855
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skull_fireball_red-Sheet_2
+      name: morcego-Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 400
         y: 0
-        width: 64
-        height: 64
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3c99e1dc1e5b5547a40ddd16bc4eaa5
-      internalID: -469430760
+      spriteID: bff95c9fcacb3ee4493aee97b423cf98
+      internalID: -1033556020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skull_fireball_red-Sheet_3
+      name: morcego-Sheet_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 600
         y: 0
-        width: 64
-        height: 64
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c5371f81d25f6f4fa6c8508f676017b
-      internalID: 888638501
+      spriteID: d23119f7ecbdc8a43bededcb38841c82
+      internalID: -2133800757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skull_fireball_red-Sheet_4
+      name: morcego-Sheet_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 800
         y: 0
-        width: 64
-        height: 64
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75a496f913af4d84486f19b89ddce1ef
-      internalID: 1950762823
+      spriteID: e91a09afe177d3048bbc43c53d27262e
+      internalID: -210719405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skull_fireball_red-Sheet_5
+      name: morcego-Sheet_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 1000
         y: 0
-        width: 64
-        height: 64
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4a15bdfcca6cd741bb9b7b6087c36ef
-      internalID: -1990515097
+      spriteID: 7e7f13f4cac2e874cb54b1411344cd1a
+      internalID: 53107738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skull_fireball_red-Sheet_6
+      name: morcego-Sheet_6
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1200
         y: 0
-        width: 64
-        height: 64
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4628451f3028144da9b47d0664d54b4
-      internalID: -117594786
+      spriteID: e86e6efccacfa6e498a5df583671c71b
+      internalID: -1245979524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skull_fireball_red-Sheet_7
+      name: morcego-Sheet_7
       rect:
         serializedVersion: 2
-        x: 448
+        x: 1400
         y: 0
-        width: 64
-        height: 64
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,8 +284,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2885edd52807a0941a21978381b48e0e
-      internalID: -1803086243
+      spriteID: b6f4ed4d072b8454ab699a8814436474
+      internalID: 792539604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: morcego-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29fafdd3a7dc36e43b297790939e02b1
+      internalID: -1768428866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: morcego-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e639933a1841848ab9c7815da76710
+      internalID: 1709893082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: morcego-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b70efcca0d414f64f9e5b15b0beecf3f
+      internalID: 259931452
       vertices: []
       indices: 
       edges: []
@@ -301,14 +364,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      skull_fireball_red-Sheet_0: 339906309
-      skull_fireball_red-Sheet_1: 896398247
-      skull_fireball_red-Sheet_2: -469430760
-      skull_fireball_red-Sheet_3: 888638501
-      skull_fireball_red-Sheet_4: 1950762823
-      skull_fireball_red-Sheet_5: -1990515097
-      skull_fireball_red-Sheet_6: -117594786
-      skull_fireball_red-Sheet_7: -1803086243
+      morcego-Sheet_0: 689571168
+      morcego-Sheet_1: 1299004855
+      morcego-Sheet_10: 259931452
+      morcego-Sheet_2: -1033556020
+      morcego-Sheet_3: -2133800757
+      morcego-Sheet_4: -210719405
+      morcego-Sheet_5: 53107738
+      morcego-Sheet_6: -1245979524
+      morcego-Sheet_7: 792539604
+      morcego-Sheet_8: -1768428866
+      morcego-Sheet_9: 1709893082
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
