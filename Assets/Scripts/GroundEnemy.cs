@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GroundEnemy : MonoBehaviour
 {
-    public GameObject pointA;
-    public GameObject pointB;
     private Rigidbody2D rb;
     private Animator anim;
     private Transform currentPoint;
@@ -13,14 +11,29 @@ public class GroundEnemy : MonoBehaviour
     [Header("PlayerCheck")]
     public Transform playerCheckPos;
     public Vector2 playerCheckSize = new Vector2(0.5f, 0.05f);
-    public LayerMask playerLayer;
+    public LayerMask playerHitBoxLayer;
     bool inContactWithPlayer;
 
     [Header("EnemyMovement")]
+    public GameObject pointA; // Point A and Point B are the given area that the ground enemy will move
+    public GameObject pointB;
     public float speed;
     float horizontalMovement;
     private bool isWalking = false;
     bool isFacingRight = false;
+
+    [Header("DamagePlayer")]
+    public Transform playerDetectionPos;
+    public Vector2 playerDetectionSize = new Vector2(0.5f, 0.05f);
+    public LayerMask playerLayer;
+    bool playerDetected;
+    bool isAttacking = false;
+    bool isWaiting = false;
+    float attackTime = 0.5f; // attack timer to play out bite animation
+    float attackTimer;
+    float waitTime = 0.8f; // wait timer to wait for next attack
+    float waitTimer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +48,16 @@ public class GroundEnemy : MonoBehaviour
     {
         PlayerCheck();
         GettingHit();
-        Move();
-
+        PlayerDetectionCheck();
+        Attack();
+        if (playerDetected == false)
+        {
+            Move();
+        }
         anim.SetBool("isWalking", isWalking);
+        anim.SetBool("isAttacking", isAttacking);
+        anim.SetBool("isWaiting", isWaiting);
+
     }
 
     /*
@@ -87,19 +107,83 @@ public class GroundEnemy : MonoBehaviour
         }
 
     }
+    /*
+     *  Attack will set the booleans to true or false so that the enemy can play out the attack animations
+     */
+    private void Attack()
+    {
+        if(playerDetected == true)
+        {
+            if (isWaiting == false)
+            {
+                isAttacking = true;
+                isWalking = false;
+                attackTimer = attackTime;
+            }
 
+        }
+        else
+        {
+            isWalking = true;
+            isAttacking = false;
+        }
+    }
+    /*
+     * ProcessAttack will let the ground enemy play out the attack animation as well as have a wait timer for the next attack;
+     */
+    private void ProcessAttack()
+    {
+        if (attackTimer > 0f) // attack timer has started
+        {
+            attackTimer -= Time.deltaTime;
+        }
+        else if (attackTimer <= 0f && isAttacking == true)
+        {
+            isWaiting = true;
+            waitTimer = waitTime;
+
+        }
+        if (waitTimer > 0f) // attack timer has started
+        {
+            waitTimer -= Time.deltaTime;
+        }
+        else if (waitTimer <= 0f && isAttacking == true)
+        {
+            isWaiting = false;
+        }
+        else
+        {
+            isWaiting = false;
+            isWalking = true;
+        }
+    }
     /*
      * PlayerCheck will see if the player is hitting the enemy.
      */
     private void PlayerCheck()
     {
-        if (Physics2D.OverlapBox(playerCheckPos.position, playerCheckSize, 0, playerLayer))
+        if (Physics2D.OverlapBox(playerCheckPos.position, playerCheckSize, 0, playerHitBoxLayer))
         {
             inContactWithPlayer = true;
         }
         else
         {
             inContactWithPlayer = false;
+        }
+    }
+    
+    /*
+     * PlayerDetection will check if player is within attacking range
+     */
+    private void PlayerDetectionCheck()
+    {
+        if(Physics2D.OverlapBox(playerDetectionPos.position, playerDetectionSize, 0, playerLayer))
+        {
+            playerDetected = true;
+        }
+        else
+        {
+            playerDetected = false;
         }
     }
 
@@ -122,9 +206,13 @@ public class GroundEnemy : MonoBehaviour
         //PlayerCheck
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(playerCheckPos.position, playerCheckSize);
+        //PatrolArea
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(pointA.transform.position, 0.5f);
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
+        //DetectionBox
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(playerDetectionPos.position, playerDetectionSize);
     }
 }
