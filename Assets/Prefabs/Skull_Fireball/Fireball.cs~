@@ -34,10 +34,15 @@ public class Fireball : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
 	var parent = other.GetComponentInParent<Transform>();
 
-	if(parent.CompareTag("Player") || parent.CompareTag("Solid")){
+	if(parent.CompareTag("Player")){
 	    rb.velocity = new Vector2(0, 0);
 	    sAnimator.SetTrigger("TrObjectHit");
 	}
+	else if(parent.CompareTag("Solid")){
+	    rb.velocity = new Vector2(0, 0);
+	    sAnimator.SetTrigger("TrObjectHit");
+	}
+
     }
 
     void ObjectHit(){

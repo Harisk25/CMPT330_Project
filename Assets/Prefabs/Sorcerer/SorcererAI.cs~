@@ -57,7 +57,6 @@ public class SorcererAI : MonoBehaviour{
 	if(health == 0){
 	    sAnimator.SetTrigger("TrDeath");
 	}
-
     }
 
     void EnemyDeath(){

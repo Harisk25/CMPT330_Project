@@ -13,7 +13,9 @@ public class SorcererAI : MonoBehaviour{
     public int health = 3;
     public float invincibleTime = 0.7f;
     public GameObject Fireball;
-    public Transform fireballSpawn;
+    public Transform fireballSpawn1;
+    public Transform fireballSpawn2;
+
 
 
     void Awake(){
@@ -64,6 +66,13 @@ public class SorcererAI : MonoBehaviour{
     }
 
     void SpawnProjectile(){
-    	var fireball = Instantiate(Fireball, fireballSpawn.position, fireballSpawn.rotation);
+	if(spriteRenderer.flipX){
+
+	    var fireball = Instantiate(Fireball, fireballSpawn2.position, fireballSpawn2.rotation);
+	}
+	else{
+	    var fireball = Instantiate(Fireball, fireballSpawn1.position, fireballSpawn1.rotation);
+
+	}
     }
 }
