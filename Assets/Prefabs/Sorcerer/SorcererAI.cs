@@ -8,13 +8,15 @@ public class SorcererAI : MonoBehaviour{
     private Animator sAnimator;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D hitBox;
- 
-    private bool isHit = false;
     
-
     [Header ("Stats")]
     public int health = 3;
     public float invincibleTime = 0.7f;
+    public GameObject Fireball;
+    public Transform fireballSpawn1;
+    public Transform fireballSpawn2;
+
+
 
     void Awake(){
 	sAnimator = GetComponent<Animator>();
@@ -57,12 +59,20 @@ public class SorcererAI : MonoBehaviour{
 	if(health == 0){
 	    sAnimator.SetTrigger("TrDeath");
 	}
-
     }
 
     void EnemyDeath(){
 	Destroy(gameObject);
     }
 
-    void SpawnProjectile(){}
+    void SpawnProjectile(){
+	if(spriteRenderer.flipX){
+
+	    var fireball = Instantiate(Fireball, fireballSpawn2.position, fireballSpawn2.rotation);
+	}
+	else{
+	    var fireball = Instantiate(Fireball, fireballSpawn1.position, fireballSpawn1.rotation);
+
+	}
+    }
 }
