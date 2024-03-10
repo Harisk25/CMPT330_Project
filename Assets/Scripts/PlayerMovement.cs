@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator animator;
     public CapsuleCollider2D hitBox;
+    public BoxCollider2D playerBox;
     bool isFacingRight = true;
 
     [Header ("Player Stats")] //Header adds headers in unity to making sectiosn of  variables popout.
@@ -69,6 +71,10 @@ public class PlayerMovement : MonoBehaviour
     float attackRestTime = 0.4f;
     float attackRestTimer;
 
+    [Header("ChangeScene")]
+    float changeTimer;
+    public float changeTime = 2f;
+
 
 
     // Update is called once per frame
@@ -92,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(0, 0);
             ProcessDeath();
         }
 
@@ -171,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-    
+
     /*
      * CancelWallJump is an invoke method that is invoked when a player performs a wall jump
      */
@@ -265,6 +270,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetTrigger("Death");
                 isDead = true;
+                changeTimer = changeTime;
+                playerBox.enabled = false;
+                rb.bodyType = RigidbodyType2D.Static;
             }
         }
     }
@@ -273,6 +281,14 @@ public class PlayerMovement : MonoBehaviour
         if(isDead == true)
         {
             //Send to you died screen, have reset button
+            if(changeTimer <= 0f)
+            {
+                SceneManager.LoadScene("Death");
+            }
+            else
+            {
+                changeTimer -= Time.deltaTime;
+            }
         }
     }
 

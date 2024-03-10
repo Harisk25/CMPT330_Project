@@ -7,6 +7,15 @@ public class GroundEnemy : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private Transform currentPoint;
+    public BoxCollider2D enemyBox;
+
+    [Header("EnemyStats")]
+    public int enemyHP = 2;
+    bool enemyInvincible = false;
+    float enemyInvincbleTimer;
+    public float enemyInvincbleTime = 0.8f;
+    private bool isDead = false;
+
 
     [Header("PlayerCheck")]
     public Transform playerCheckPos;
@@ -28,11 +37,8 @@ public class GroundEnemy : MonoBehaviour
     public LayerMask playerLayer;
     bool playerDetected;
     bool isAttacking = false;
-    bool isWaiting = false;
-    float attackTime = 0.5f; // attack timer to play out bite animation
+    float attackTime = 1.5f; // attack timer to play out bite animation
     float attackTimer;
-    float waitTime = 0.8f; // wait timer to wait for next attack
-    float waitTimer;
 
 
     // Start is called before the first frame update
@@ -49,14 +55,16 @@ public class GroundEnemy : MonoBehaviour
         PlayerCheck();
         GettingHit();
         PlayerDetectionCheck();
+        ProcessEnemyInvincble();
+        ProcessAttack();
         Attack();
-        if (playerDetected == false)
+        if (playerDetected == false && enemyInvincible == false && isDead == false)
         {
             Move();
         }
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isAttacking", isAttacking);
-        anim.SetBool("isWaiting", isWaiting);
+        anim.SetBool("enemyInvincible", enemyInvincible);
 
     }
 
@@ -65,10 +73,44 @@ public class GroundEnemy : MonoBehaviour
      */
     private void GettingHit()
     {
-        if (inContactWithPlayer == true)
+        if (inContactWithPlayer == true && enemyInvincible == false)
         {
-            Debug.Log("Player Hitting Me! ");
+            enemyHP--;
+            anim.SetTrigger("Hurt");
+            enemyInvincible = true;
+            enemyInvincbleTimer = enemyInvincbleTime;
+            rb.velocity = new Vector2(0, 0);
+            isWalking = false;
+            if (enemyHP <= 0)
+            {
+                anim.SetTrigger("Death");
+                isDead = true;
+                enemyInvincbleTimer += 0.5f;
+                enemyBox.enabled = false;
+                rb.gravityScale = 0;
+            }
         }
+    }
+
+    /*
+    * ProcessEnemyInvincble makes it so that the enemy cant get hit for a few seconds after getting hit.
+    */
+    private void ProcessEnemyInvincble()
+    {
+        if (enemyInvincible == true && enemyInvincbleTimer > 0f)
+        {
+            enemyInvincbleTimer -= Time.deltaTime;
+        }
+        else if (enemyInvincbleTimer <= 0f)
+        {
+            enemyInvincible = false;
+            isWalking = true;
+            if (isDead == true)
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
 
     /*
@@ -114,7 +156,7 @@ public class GroundEnemy : MonoBehaviour
     {
         if(playerDetected == true)
         {
-            if (isWaiting == false)
+            if (attackTimer <= 0f)
             {
                 isAttacking = true;
                 isWalking = false;
@@ -136,25 +178,6 @@ public class GroundEnemy : MonoBehaviour
         if (attackTimer > 0f) // attack timer has started
         {
             attackTimer -= Time.deltaTime;
-        }
-        else if (attackTimer <= 0f && isAttacking == true)
-        {
-            isWaiting = true;
-            waitTimer = waitTime;
-
-        }
-        if (waitTimer > 0f) // attack timer has started
-        {
-            waitTimer -= Time.deltaTime;
-        }
-        else if (waitTimer <= 0f && isAttacking == true)
-        {
-            isWaiting = false;
-        }
-        else
-        {
-            isWaiting = false;
-            isWalking = true;
         }
     }
     /*
