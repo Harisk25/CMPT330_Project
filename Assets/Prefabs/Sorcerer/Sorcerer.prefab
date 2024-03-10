@@ -35,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6063332979981988424}
+  - {fileID: 4152682676196856416}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4972007826211217021
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 388536594, guid: 426b74d45bdcd684caa8f97c471b8be8, type: 3}
+  m_Sprite: {fileID: 1527307883, guid: 426b74d45bdcd684caa8f97c471b8be8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,6 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   invincibleTime: 0.7
+  Fireball: {fileID: 564058607359948087, guid: ebcbcc51a6d40bb4ebcea7e6c055c4e9, type: 3}
+  fireballSpawn: {fileID: 4152682676196856416}
 --- !u!61 &2500098681058631545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -297,3 +300,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1 &6445345367175804397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4152682676196856416}
+  m_Layer: 0
+  m_Name: FireballSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4152682676196856416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6445345367175804397}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 1.0000001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2229134855393439741}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
