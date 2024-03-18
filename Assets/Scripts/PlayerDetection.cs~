@@ -23,7 +23,7 @@ public class PlayerDetection : MonoBehaviour{
     public Color gizmoDetectedColor = Color.red;
     public bool showGizmos = true;
 
-    private GameObject target;
+    public GameObject target;
 
     public GameObject Target {
 	get => target;
@@ -65,7 +65,6 @@ public class PlayerDetection : MonoBehaviour{
 	    }
 
 	    Gizmos.DrawCube((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize);
-	    Debug.Log("yes");
 	}
 	    
     }

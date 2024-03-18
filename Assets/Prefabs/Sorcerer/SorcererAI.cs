@@ -55,7 +55,6 @@ public class SorcererAI : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D other){
 	sAnimator.SetTrigger("TrHit");
 	health--;
-	Debug.Log("Enemy Hit");
 	if(health == 0){
 	    sAnimator.SetTrigger("TrDeath");
 	}

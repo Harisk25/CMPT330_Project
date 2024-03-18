@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     bool playerInvincible = false;
     float playerInvincbleTimer;
     public float playerInvincbleTime = 0.8f;
-    public bool wallPowerupActive = false;
     private bool isDead = false;
 
 
@@ -58,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     bool isWallSliding;
 
     //Wall Jumping
+    bool wallPowerupActive = false;
     bool isWallJumping;
     float wallJumpDirection;
     float wallJumpTime = 0.5f;

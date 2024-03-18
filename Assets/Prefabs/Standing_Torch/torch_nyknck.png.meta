@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0f6cca931cac6548966bba718d245cf
+guid: 37b69e05183c43a4eab36491e6075a30
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,232 +123,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: morcego-Sheet_0
+      name: torch_nyknck_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9f1d9dc6c83d744a3435468f80bc07
+      internalID: -2038586785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torch_nyknck_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3457572325c13294abfee2fc58e15d4b
+      internalID: 1415120522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torch_nyknck_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5bb6d94da509854cae8148583df40ec
+      internalID: -175924742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torch_nyknck_7
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
-        height: 200
+        width: 32
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19f42f18aefc0544aaf21d37d878054f
-      internalID: 689571168
+      spriteID: 35d2b3b360403ca48b9f0372adeb523d
+      internalID: 929920347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: morcego-Sheet_1
+      name: torch_nyknck_8
       rect:
         serializedVersion: 2
-        x: 200
+        x: 32
         y: 0
-        width: 200
-        height: 200
+        width: 32
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df92316b099580249855f922bbe766ad
-      internalID: 1299004855
+      spriteID: 9eefae8fc3156bd41bfd5c0052403a6a
+      internalID: 1546494513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: morcego-Sheet_2
+      name: torch_nyknck_9
       rect:
         serializedVersion: 2
-        x: 400
+        x: 64
         y: 0
-        width: 200
-        height: 200
+        width: 32
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bff95c9fcacb3ee4493aee97b423cf98
-      internalID: -1033556020
+      spriteID: 1a1de2784bcc2d64db6ebe5d171c896a
+      internalID: -1873952407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: morcego-Sheet_3
+      name: torch_nyknck_10
       rect:
         serializedVersion: 2
-        x: 600
+        x: 96
         y: 0
-        width: 200
-        height: 200
+        width: 32
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d23119f7ecbdc8a43bededcb38841c82
-      internalID: -2133800757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: morcego-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e91a09afe177d3048bbc43c53d27262e
-      internalID: -210719405
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: morcego-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e7f13f4cac2e874cb54b1411344cd1a
-      internalID: 53107738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: morcego-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e86e6efccacfa6e498a5df583671c71b
-      internalID: -1245979524
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: morcego-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 1400
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b6f4ed4d072b8454ab699a8814436474
-      internalID: 792539604
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: morcego-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29fafdd3a7dc36e43b297790939e02b1
-      internalID: -1768428866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: morcego-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 1800
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7e639933a1841848ab9c7815da76710
-      internalID: 1709893082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: morcego-Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 2000
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b70efcca0d414f64f9e5b15b0beecf3f
-      internalID: 259931452
+      spriteID: 5874761521f493a4483b10061ac82f89
+      internalID: -1345190730
       vertices: []
       indices: 
       edges: []
@@ -356,7 +272,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 0aba46895f2a6ef4d91768740cd4dd18
     internalID: 0
     vertices: []
     indices: 
@@ -364,17 +280,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      morcego-Sheet_0: 689571168
-      morcego-Sheet_1: 1299004855
-      morcego-Sheet_10: 259931452
-      morcego-Sheet_2: -1033556020
-      morcego-Sheet_3: -2133800757
-      morcego-Sheet_4: -210719405
-      morcego-Sheet_5: 53107738
-      morcego-Sheet_6: -1245979524
-      morcego-Sheet_7: 792539604
-      morcego-Sheet_8: -1768428866
-      morcego-Sheet_9: 1709893082
+      torch_nyknck_0: 1937362161
+      torch_nyknck_1: 1728889239
+      torch_nyknck_10: -1345190730
+      torch_nyknck_11: -808900751
+      torch_nyknck_12: 960796023
+      torch_nyknck_2: -2098571090
+      torch_nyknck_3: 1929091923
+      torch_nyknck_4: -2038586785
+      torch_nyknck_5: 1415120522
+      torch_nyknck_6: -175924742
+      torch_nyknck_7: 929920347
+      torch_nyknck_8: 1546494513
+      torch_nyknck_9: -1873952407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
