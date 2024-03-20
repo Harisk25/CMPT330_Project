@@ -9,6 +9,7 @@ public class BatAi : MonoBehaviour{
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D hitBox;
     private bool wasHit = false;
+    private bool gotHit = false;
     private Transform target;
     private Transform lastDirection;
     private Vector2 moveDirection;
@@ -38,8 +39,6 @@ public class BatAi : MonoBehaviour{
 	Movement();
     }
 
-
-
     private IEnumerator Flash(){
 	for (int n = 0; n < 2; n++){
 	    spriteRenderer.color = Color.clear;
@@ -49,22 +48,34 @@ public class BatAi : MonoBehaviour{
 	}
     }
 
+    private IEnumerator GotHit(){
+	rb.velocity = new Vector2(0,0);
+	gotHit = true;
+	yield return new WaitForSeconds(0.5f);
+	gotHit = false;
+
+    }
+
+
     void Movement(){
-	if(playerDetection.PlayerDetected && !wasHit){
+	
+	var outOfRange = PlayerOutOfRange();
+
+	if(playerDetection.PlayerDetected && !wasHit && !outOfRange){
 	    target = playerDetection.Target.transform;
 	    Vector3 direction= target.position - transform.position;
-	    direction.y+=3;
+	    direction.y+=5;
 	    direction = direction.normalized;
 	    moveDirection = direction;
 
 	}
-	else if(!playerDetection.PlayerDetected && !wasHit){
+	else if(playerDetection.PlayerDetected && !wasHit && outOfRange){
 	    
-	    if(transform.position.x == end.position.x){
+	    if(transform.position.x >= end.position.x){
 		lastDirection = start;
 		target = start;
 	    }
-	    else if(transform.position.x == start.position.x){
+	    else if(transform.position.x <= start.position.x){
 		lastDirection = end;
 		target = end;
 	    }
@@ -73,44 +84,61 @@ public class BatAi : MonoBehaviour{
 	    moveDirection = direction;
 
 	}
+
 	else if(!playerDetection.PlayerDetected && !wasHit){
 	    
-	    if(transform.position.x == end.position.x){
+	    if(transform.position.x >= end.position.x){
 		lastDirection = start;
 		target = start;
-		wasHit = true;
 	    }
-	    else if(transform.position.x == start.position.x){
+	    else if(transform.position.x <= start.position.x){
 		lastDirection = end;
 		target = end;
-		wasHit = true;
 	    }
+
 	    Vector3 direction= (target.position - transform.position).normalized;
 	    moveDirection = direction;
 
 	}
+	
+
 	else if(wasHit){
 	    target = lastDirection;
+	    if(target.transform.position.x >= end.position.x || target.transform.position.x <= start.position.x){
+		wasHit = false;
+	    }
 	    Vector3 direction= (target.position - transform.position).normalized;
 	    moveDirection = direction;
-	}
+		
 
-	rb.velocity = new Vector2(moveDirection.x, moveDirection.y)* speed;
+	}
+	if(!gotHit){
+	    rb.velocity = new Vector2(moveDirection.x, moveDirection.y)* speed;
+	}
 	
 		
     }
 
-    void OnCollisionEnter2D(Collision2D other){
+    void OnTriggerEnter2D(Collider2D other){
 	
-//	StartCoroutine(Flash());
+	StartCoroutine(Flash());
 	health--;
-	Vector2 hitDir = (transform.position - playerDetection.Target.transform.position).normalized;
-	rb.AddForce(hitDir*16.0f, ForceMode2D.Impulse);
+	StartCoroutine(GotHit());
 	wasHit = true;
 
     }
 
     void EnemyDeath(){
 	Destroy(gameObject);
+    }
+
+    bool PlayerOutOfRange(){
+	if(playerDetection.PlayerDetected){
+	   if(playerDetection.Target.transform.position.x < start.position.x || playerDetection.Target.transform.position.x > end.position.x){
+		return true;
+	    }
+	    return false;
+	}
+	return false;
     }
 }
