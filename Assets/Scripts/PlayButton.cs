@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayButton : MonoBehaviour
 {
+    public int sceneNumber = 0;
     public GameObject definedButton;
     public UnityEvent OnClick = new UnityEvent();
 
@@ -33,7 +34,6 @@ public class PlayButton : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log("Play was pressed!");
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene(sceneNumber);
     }
 }

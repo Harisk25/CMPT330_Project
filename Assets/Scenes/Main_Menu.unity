@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91042885bc62ee84aaaf777746c39815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneNumber: 1
   definedButton: {fileID: 213563603}
   OnClick:
     m_PersistentCalls:
