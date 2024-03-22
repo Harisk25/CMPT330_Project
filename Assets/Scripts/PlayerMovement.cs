@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class PlayerMovement : MonoBehaviour
     public float playerInvincbleTime = 0.8f;
     public bool wallPowerupActive = false;
     private bool isDead = false;
+    [Header ("Display Player Stats")]
+    public int numOfHearts;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+    public Image wallGlove;
 
 
     [Header ("Movement")] 
@@ -81,6 +88,34 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if(i < playerHP)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+        if(wallPowerupActive == true)
+        {
+            wallGlove.enabled = true;
+        }
+        else
+        {
+            wallGlove.enabled = false;
+        }
         if (isDead == false)
         {
             ProcessGravity();
@@ -101,7 +136,6 @@ public class PlayerMovement : MonoBehaviour
         {
             ProcessDeath();
         }
-
         animator.SetFloat("AirSpeedY", rb.velocity.y);
         animator.SetFloat("magnitude", rb.velocity.magnitude);
         animator.SetBool("Grounded", isGrounded);
