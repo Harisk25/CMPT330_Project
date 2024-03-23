@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public Image wallGlove;
+    [Header("Display Score")]
+    public int scoreCount = 0;
+    public Text scoreText;
 
 
     [Header ("Movement")] 
@@ -88,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoreText.text = "" + Mathf.Round(scoreCount);
         for (int i = 0; i < hearts.Length; i++)
         {
             if(i < playerHP)
@@ -268,7 +272,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //Wall jump
-            if (context.performed && wallJumpTimer > 0f)
+            if (context.performed && wallJumpTimer > 0f && wallPowerupActive == true)
             {
                 isWallJumping = true;
                 rb.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
