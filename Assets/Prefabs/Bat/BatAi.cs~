@@ -15,11 +15,14 @@ public class BatAi : MonoBehaviour{
     private Vector2 moveDirection;
     private Rigidbody2D rb;
 
+
     [Header ("Stats")]
     public int health = 2;
     public float speed = 1.0f;
     public Transform start;
     public Transform end;
+
+    [SerializeField] private AudioClip damageSoundClip;
 
 
     void Awake(){
@@ -121,6 +124,7 @@ public class BatAi : MonoBehaviour{
 
     void OnTriggerEnter2D(Collider2D other){
 	
+	SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.7f);
 	StartCoroutine(Flash());
 	health--;
 	StartCoroutine(GotHit());

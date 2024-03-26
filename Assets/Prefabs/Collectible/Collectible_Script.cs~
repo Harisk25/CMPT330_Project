@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Collectible_Script : MonoBehaviour
-{
-    // Start is called before the first frame update
+{		
+    // [Header ("UI")]
+    // public UserInterface UI;
+    [SerializeField] private AudioClip collectSoundClip;
+
     void Start()
     {
         
@@ -14,5 +17,18 @@ public class Collectible_Script : MonoBehaviour
     void Update()
     {
         
+    }
+    void OnTriggerEnter2D(Collider2D collision){
+	
+    	if(collision.gameObject.tag == "Player"){
+	    // UI.collectibleCount += 1;
+	    var player = collision.gameObject.GetComponent<PlayerMovement>();
+	    if(player.playerHP < 4){
+	    	player.playerHP += 1;
+	    }
+	    SoundFXManager.instance.PlaySoundFXClip(collectSoundClip, transform, 0.7f);
+	    Destroy(gameObject);
+	}
+    
     }
 }

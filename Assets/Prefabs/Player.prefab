@@ -553,6 +553,7 @@ SpriteRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b58354c186d9bde42ad2a4ab0545dde9, type: 2}
+  - {fileID: 2100000, guid: c9d595aca6926444da7e5aa971c4cadf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -744,6 +745,7 @@ MonoBehaviour:
   rb: {fileID: 5802558507170045661}
   animator: {fileID: 6117809808710607553}
   hitBox: {fileID: 8765479502145613520}
+<<<<<<< Updated upstream
   playerBox: {fileID: 4318783211811308682}
   playerHP: 4
   playerInvincbleTime: 0.8
@@ -759,6 +761,17 @@ MonoBehaviour:
   wallGlove: {fileID: 1862396948211163976}
   scoreCount: 0
   scoreText: {fileID: 4670420604387661502}
+=======
+  playerBox: {fileID: 0}
+  playerHP: 4
+  playerInvincbleTime: 0.8
+  wallPowerupActive: 0
+  numOfHearts: 0
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
+  wallGlove: {fileID: 0}
+>>>>>>> Stashed changes
   moveSpeed: 10
   jumpPower: 20
   maxJumps: 1
@@ -781,8 +794,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   wallSlideSpeed: 2
+<<<<<<< Updated upstream
   wallJumpPower: {x: 5, y: 15}
   changeTime: 2
+=======
+  wallJumpPower: {x: 5, y: 10}
+  changeTime: 2
+  attackSoundClip: {fileID: 8300000, guid: 88255d86ee0ca0b46917afad92fe9064, type: 3}
+  jumpSoundClip: {fileID: 8300000, guid: 2844e1962573ba542b3a8b64f1eb9c0b, type: 3}
+>>>>>>> Stashed changes
 --- !u!61 &4318783211811308682
 BoxCollider2D:
   m_ObjectHideFlags: 0

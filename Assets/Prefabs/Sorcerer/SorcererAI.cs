@@ -15,7 +15,8 @@ public class SorcererAI : MonoBehaviour{
     public GameObject Fireball;
     public Transform fireballSpawn1;
     public Transform fireballSpawn2;
-
+    [SerializeField] private AudioClip attackSoundClip;
+    [SerializeField] private AudioClip hitSoundClip;
 
 
     void Awake(){
@@ -65,6 +66,7 @@ public class SorcererAI : MonoBehaviour{
     }
 
     void SpawnProjectile(){
+	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 0.6f);
 	if(spriteRenderer.flipX){
 
 	    var fireball = Instantiate(Fireball, fireballSpawn2.position, fireballSpawn2.rotation);
@@ -73,5 +75,9 @@ public class SorcererAI : MonoBehaviour{
 	    var fireball = Instantiate(Fireball, fireballSpawn1.position, fireballSpawn1.rotation);
 
 	}
+    }
+
+    public void PlayHitSound(){
+    	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.5f);
     }
 }

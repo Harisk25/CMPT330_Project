@@ -152,6 +152,8 @@ MonoBehaviour:
   Fireball: {fileID: 564058607359948087, guid: ebcbcc51a6d40bb4ebcea7e6c055c4e9, type: 3}
   fireballSpawn1: {fileID: 4152682676196856416}
   fireballSpawn2: {fileID: 2062994572044123675}
+  attackSoundClip: {fileID: 8300000, guid: 723cbdc941ff6654b88f186f74c44566, type: 3}
+  hitSoundClip: {fileID: 8300000, guid: ae6122a104bc5024abca3b6887008a47, type: 3}
 --- !u!61 &2500098681058631545
 BoxCollider2D:
   m_ObjectHideFlags: 0

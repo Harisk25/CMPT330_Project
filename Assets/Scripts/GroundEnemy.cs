@@ -40,6 +40,10 @@ public class GroundEnemy : MonoBehaviour
     float attackTime = 1.5f; // attack timer to play out bite animation
     float attackTimer;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip attackSoundClip;
+    [SerializeField] private AudioClip hitSoundClip;
+
 
     // Start is called before the first frame update
     void Start()
@@ -158,7 +162,7 @@ public class GroundEnemy : MonoBehaviour
         {
             if (attackTimer <= 0f)
             {
-                isAttacking = true;
+		isAttacking = true;
                 isWalking = false;
                 attackTimer = attackTime;
             }
@@ -238,4 +242,13 @@ public class GroundEnemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(playerDetectionPos.position, playerDetectionSize);
     }
+
+    public void PlayAttackSound(){
+	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 0.7f);
+    }
+
+    public void PlayHitSound(){
+    	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.5f);
+    }
+
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,7 +18,14 @@ public class PlayerMovement : MonoBehaviour
     bool playerInvincible = false;
     float playerInvincbleTimer;
     public float playerInvincbleTime = 0.8f;
+    public bool wallPowerupActive = false;
     private bool isDead = false;
+    [Header ("Display Player Stats")]
+    public int numOfHearts;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+    public Image wallGlove;
 
 
     [Header ("Movement")] 
@@ -57,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
     bool isWallSliding;
 
     //Wall Jumping
-    bool wallPowerupActive = false;
     bool isWallJumping;
     float wallJumpDirection;
     float wallJumpTime = 0.5f;
@@ -76,11 +83,42 @@ public class PlayerMovement : MonoBehaviour
     float changeTimer;
     public float changeTime = 2f;
 
+    [Header("Sounds")]
+    public AudioClip attackSoundClip;
+    public AudioClip jumpSoundClip;
 
 
     // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if(i < playerHP)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+        if(wallPowerupActive == true)
+        {
+            wallGlove.enabled = true;
+        }
+        else
+        {
+            wallGlove.enabled = false;
+        }
         if (isDead == false)
         {
             ProcessGravity();
@@ -101,7 +139,6 @@ public class PlayerMovement : MonoBehaviour
         {
             ProcessDeath();
         }
-
         animator.SetFloat("AirSpeedY", rb.velocity.y);
         animator.SetFloat("magnitude", rb.velocity.magnitude);
         animator.SetBool("Grounded", isGrounded);
@@ -217,12 +254,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (jumpsRemaining > 0) //Check to see if we have jumps remaining
             {
+		
                 if (context.performed)
                 {
                     //Hold down jump button = full height
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                     jumpsRemaining--;
                     animator.SetTrigger("Jump");
+		    PlayJumpSound();
                 }
                 else if (context.canceled && rb.velocity.y > 0)
                 {
@@ -240,6 +279,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
                 wallJumpTimer = 0;
                 animator.SetTrigger("Jump");
+		PlayJumpSound();
                 //Force a flip
                 if (transform.localScale.x != wallJumpDirection)
                 {
@@ -429,5 +469,15 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(enemyCheckPos.position, enemyCheckSize);
     }
+
+    public void PlayAttackSound(){
+	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 1f);     
+    }
+
+    public void PlayJumpSound(){
+	SoundFXManager.instance.PlaySoundFXClip(jumpSoundClip, transform, 1f);     
+    }
+
+
 
 }

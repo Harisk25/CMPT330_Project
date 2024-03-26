@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Wall_Jump_Powerup : MonoBehaviour
 {  
-    [Header ("PlayerCharacter")]
-    public PlayerMovement player;
+    [SerializeField] private AudioClip collectSoundClip;
 
     void Start()
     {
@@ -21,8 +20,9 @@ public class Wall_Jump_Powerup : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision){
 	
     	if(collision.gameObject.tag == "Player"){
+	    var player = collision.gameObject.GetComponent<PlayerMovement>();
 	    player.wallPowerupActive = true;
-	    // Play sound here
+	    SoundFXManager.instance.PlaySoundFXClip(collectSoundClip, transform, 0.7f);
 	    Destroy(gameObject);
 	}
     

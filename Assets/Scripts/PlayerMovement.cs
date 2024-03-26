@@ -86,6 +86,9 @@ public class PlayerMovement : MonoBehaviour
     float changeTimer;
     public float changeTime = 2f;
 
+    [Header("Sounds")]
+    public AudioClip attackSoundClip;
+    public AudioClip jumpSoundClip;
 
 
     // Update is called once per frame
@@ -171,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
      */
     private void ProcessWallSlide()
     {
-        if (!isGrounded && WallCheck() & horizontalMovement != 0) //Player must be not grounded and next to a wall and not moving in the x - axis
+        if (!isGrounded && WallCheck() & horizontalMovement != 0 && wallPowerupActive) //Player must be not grounded and next to a wall and not moving in the x - axis
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -wallSlideSpeed)); //Caps fall rate, this is a reduced speed
@@ -255,12 +258,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (jumpsRemaining > 0) //Check to see if we have jumps remaining
             {
+		
                 if (context.performed)
                 {
                     //Hold down jump button = full height
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                     jumpsRemaining--;
                     animator.SetTrigger("Jump");
+		    PlayJumpSound();
                 }
                 else if (context.canceled && rb.velocity.y > 0)
                 {
@@ -278,6 +283,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
                 wallJumpTimer = 0;
                 animator.SetTrigger("Jump");
+		PlayJumpSound();
                 //Force a flip
                 if (transform.localScale.x != wallJumpDirection)
                 {
@@ -467,5 +473,15 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(enemyCheckPos.position, enemyCheckSize);
     }
+
+    public void PlayAttackSound(){
+	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 1f);     
+    }
+
+    public void PlayJumpSound(){
+	SoundFXManager.instance.PlaySoundFXClip(jumpSoundClip, transform, 1f);     
+    }
+
+
 
 }

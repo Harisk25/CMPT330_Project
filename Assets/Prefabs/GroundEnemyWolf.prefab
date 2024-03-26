@@ -216,7 +216,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c9d595aca6926444da7e5aa971c4cadf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -348,6 +348,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  attackSoundClip: {fileID: 8300000, guid: de75450b0dd70f64dbf79b53656cc07c, type: 3}
+  hitSoundClip: {fileID: 8300000, guid: ae6122a104bc5024abca3b6887008a47, type: 3}
 --- !u!95 &1842261389271938213
 Animator:
   serializedVersion: 5

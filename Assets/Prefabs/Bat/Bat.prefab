@@ -194,6 +194,7 @@ MonoBehaviour:
   speed: 10
   start: {fileID: 0}
   end: {fileID: 0}
+  damageSoundClip: {fileID: 8300000, guid: d936fcc7eebeaa941851eca1b4e671d8, type: 3}
 --- !u!50 &8004657303461152533
 Rigidbody2D:
   serializedVersion: 4
