@@ -350,6 +350,7 @@ MonoBehaviour:
     m_Bits: 256
   attackSoundClip: {fileID: 8300000, guid: de75450b0dd70f64dbf79b53656cc07c, type: 3}
   hitSoundClip: {fileID: 8300000, guid: ae6122a104bc5024abca3b6887008a47, type: 3}
+  deathSoundClip: {fileID: 8300000, guid: c3925d50cf3e0014caa8e00fde72d63f, type: 3}
 --- !u!95 &1842261389271938213
 Animator:
   serializedVersion: 5

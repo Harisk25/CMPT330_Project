@@ -39,7 +39,10 @@ public class GroundEnemy : MonoBehaviour
     bool isAttacking = false;
     float attackTime = 1.5f; // attack timer to play out bite animation
     float attackTimer;
+
+    [Header("Sound Effects")]
     [SerializeField] private AudioClip attackSoundClip;
+    [SerializeField] private AudioClip hitSoundClip;
 
 
     // Start is called before the first frame update
@@ -243,4 +246,9 @@ public class GroundEnemy : MonoBehaviour
     public void PlayAttackSound(){
 	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 0.7f);
     }
+
+    public void PlayHitSound(){
+    	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.5f);
+    }
+
 }

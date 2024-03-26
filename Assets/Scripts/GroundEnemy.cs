@@ -43,6 +43,7 @@ public class GroundEnemy : MonoBehaviour
     [Header("Sound Effects")]
     [SerializeField] private AudioClip attackSoundClip;
     [SerializeField] private AudioClip hitSoundClip;
+    [SerializeField] private AudioClip deathSoundClip;
 
 
     // Start is called before the first frame update
@@ -249,6 +250,9 @@ public class GroundEnemy : MonoBehaviour
 
     public void PlayHitSound(){
     	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.5f);
+    }
+    public void PlayDeathSound(){
+    	SoundFXManager.instance.PlaySoundFXClip(deathSoundClip, transform, 0.5f);
     }
 
 }
