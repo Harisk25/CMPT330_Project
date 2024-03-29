@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -383,123 +383,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &119514389
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -380.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 71
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229134855393439741, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2382765257166908784, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_Name
-      value: 'Sorcerer '
-      objectReference: {fileID: 0}
-    - target: {fileID: 2382765257166908784, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_LayerOverridePriority
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_ForceSendLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2500098681058631545, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_ForceReceiveLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3291763293700346786, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: detectorSize.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3291763293700346786, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: detectorOriginOffset.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719686275490636191, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832092625266393959, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832092625266393959, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832092625266393959, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 767
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c5092c92a6360e64ab800b49168ead48, type: 3}
 --- !u!4 &143361795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7036058021383934873, guid: 7a2d3ad0792c3b94ba37b982af03b1ca, type: 3}
@@ -15541,7 +15424,7 @@ Transform:
   m_GameObject: {fileID: 781841336}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -347.91, y: 71.89, z: 35}
+  m_LocalPosition: {x: -347.91, y: 70.47, z: 35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -103996,7 +103879,6 @@ SceneRoots:
   - {fileID: 1404268948}
   - {fileID: 7786485}
   - {fileID: 999711447}
-  - {fileID: 119514389}
   - {fileID: 179394346}
   - {fileID: 599758551}
   - {fileID: 1142279018}

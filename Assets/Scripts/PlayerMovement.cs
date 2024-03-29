@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     float playerInvincbleTimer;
     public float playerInvincbleTime = 0.8f;
     public bool wallPowerupActive = false;
+    public bool hasKey = false;
     private bool isDead = false;
     [Header ("Display Player Stats")]
     public int numOfHearts;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public Image wallGlove;
+    public Image key;
     [Header("Display Score")]
     public int scoreCount = 0;
     public Text scoreText;
@@ -123,6 +125,15 @@ public class PlayerMovement : MonoBehaviour
         {
             wallGlove.enabled = false;
         }
+        if (hasKey == true)
+        {
+            key.enabled = true;
+        }
+        else
+        {
+            key.enabled = false;
+        }
+
         if (isDead == false)
         {
             ProcessGravity();

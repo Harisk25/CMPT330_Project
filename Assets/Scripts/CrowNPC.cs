@@ -8,7 +8,6 @@ public class CrowNPC : MonoBehaviour
     public GameObject dialoguePanel;
     public Text dialogueText;
     public string dialogue;
-    private int index;
     private int playerEntered = 1;
 
     public float wordSpeed;
@@ -36,7 +35,6 @@ public class CrowNPC : MonoBehaviour
     public void zeroText()
     {
         dialogueText.text = "";
-        index = 0;
         dialoguePanel.SetActive(false);
     }
 
