@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 426729364407889104}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -518,6 +518,7 @@ MonoBehaviour:
   playerHP: 4
   playerInvincbleTime: 0.8
   wallPowerupActive: 0
+  hasKey: 0
   numOfHearts: 4
   hearts:
   - {fileID: 0}
@@ -527,6 +528,7 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: 926225b8a44eb084ca9ccbc9cf9b46bd, type: 3}
   emptyHeart: {fileID: 21300000, guid: 47a069a0200c5a34098cb8bb0ec680a0, type: 3}
   wallGlove: {fileID: 0}
+  key: {fileID: 0}
   scoreCount: 0
   scoreText: {fileID: 0}
   moveSpeed: 10
