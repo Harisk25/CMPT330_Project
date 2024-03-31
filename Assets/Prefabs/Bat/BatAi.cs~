@@ -124,7 +124,7 @@ public class BatAi : MonoBehaviour{
 
     void OnTriggerEnter2D(Collider2D other){
 	
-	SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.7f);
+	SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.4f);
 	StartCoroutine(Flash());
 	health--;
 	StartCoroutine(GotHit());

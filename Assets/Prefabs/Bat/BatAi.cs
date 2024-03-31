@@ -23,6 +23,7 @@ public class BatAi : MonoBehaviour{
     public Transform end;
 
     [SerializeField] private AudioClip damageSoundClip;
+    [SerializeField] private AudioClip damage2SoundClip;
 
 
     void Awake(){
@@ -124,7 +125,8 @@ public class BatAi : MonoBehaviour{
 
     void OnTriggerEnter2D(Collider2D other){
 	
-	SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.7f);
+	SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.4f);
+	SoundFXManager.instance.PlaySoundFXClip(damage2SoundClip, transform, 0.7f);
 	StartCoroutine(Flash());
 	health--;
 	StartCoroutine(GotHit());
