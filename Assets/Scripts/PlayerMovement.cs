@@ -311,7 +311,6 @@ public class PlayerMovement : MonoBehaviour
     
     /*
      * Hit checks if player is in contact with an enemy, if so player takes damage
-     * NOTE: WORK IN PROGRESS
      */
     private void GettingHit()
     {
