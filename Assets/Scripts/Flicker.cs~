@@ -37,7 +37,7 @@ public class Flicker : MonoBehaviour{
 		}
 		
 		while(smoothQueue.Count >= smoothing){
-			lastSumm -= smoothQueue.Dequeue();
+			lastSum -= smoothQueue.Dequeue();
 		}
 
 		float newVal = Random.Range(minIntensity, maxIntensity);

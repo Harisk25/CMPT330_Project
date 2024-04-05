@@ -36,11 +36,15 @@ public class Fireball : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
 	var parent = other.GetComponentInParent<Transform>();
-
+	// Checks if the object hit is tagged as the player and 
+	// plays the explosion animation
 	if(parent.CompareTag("Player")){
 	    rb.velocity = new Vector2(0, 0);
 	    sAnimator.SetTrigger("TrObjectHit");
 	}
+	// Checks if the object hit is tagged as the solid and 
+	// plays the explosion animation (for floors and walls)
+
 	else if(parent.CompareTag("Solid")){
 	    rb.velocity = new Vector2(0, 0);
 	    sAnimator.SetTrigger("TrObjectHit");
@@ -49,6 +53,7 @@ public class Fireball : MonoBehaviour
     }
 
     void ObjectHit(){
+	    // Plays the explosion sound and removes projectile
 	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.7f);
 	Destroy(gameObject);
     }

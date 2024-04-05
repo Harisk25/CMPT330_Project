@@ -44,6 +44,7 @@ public class BatAi : MonoBehaviour{
     }
 
     private IEnumerator Flash(){
+	// Causes sprite to flash after being hit
 	for (int n = 0; n < 2; n++){
 	    spriteRenderer.color = Color.clear;
 	    yield return new WaitForSeconds(0.1f);
@@ -53,6 +54,7 @@ public class BatAi : MonoBehaviour{
     }
 
     private IEnumerator GotHit(){
+	    // Causes a pause in movement for a breif time
 	rb.velocity = new Vector2(0,0);
 	gotHit = true;
 	yield return new WaitForSeconds(0.5f);
@@ -64,7 +66,11 @@ public class BatAi : MonoBehaviour{
     void Movement(){
 	
 	var outOfRange = PlayerOutOfRange();
-
+	
+	// Movement between two transform points if it detects the player it will head
+	// to the player instead and it it was hit it will be starionary for a moment
+	// before contining. If the player leave the detection zone it will return 
+	// to the movement route between the two transform points
 	if(playerDetection.PlayerDetected && !wasHit && !outOfRange){
 	    target = playerDetection.Target.transform;
 	    Vector3 direction= target.position - transform.position;
@@ -124,7 +130,8 @@ public class BatAi : MonoBehaviour{
     }
 
     void OnTriggerEnter2D(Collider2D other){
-	
+	// Plays hit sounds, causes animation to flash for a short time and stops movement
+	// when hit with player sword
 	SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.4f);
 	SoundFXManager.instance.PlaySoundFXClip(damage2SoundClip, transform, 0.7f);
 	StartCoroutine(Flash());

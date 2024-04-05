@@ -11,6 +11,9 @@ public class Fireball : MonoBehaviour
     private GameObject player;
     private float speed = 20.0f;
 
+    [SerializeField] private AudioClip hitSoundClip;
+
+
     void Awake(){
 	sAnimator = GetComponent<Animator>();
 	spriteRenderer = GetComponent<SpriteRenderer>();
@@ -46,6 +49,7 @@ public class Fireball : MonoBehaviour
     }
 
     void ObjectHit(){
+	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.7f);
 	Destroy(gameObject);
     }
 }

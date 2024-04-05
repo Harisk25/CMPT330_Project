@@ -35,15 +35,17 @@ public class Flicker : MonoBehaviour{
 		if(light == null){
 			return;
 		}
-		
+		// Dequeues the last value from the quque
+		// resetubg the light to its base value
 		while(smoothQueue.Count >= smoothing){
 			lastSum -= smoothQueue.Dequeue();
 		}
-
+		// Adds new random value withing range to queue
 		float newVal = Random.Range(minIntensity, maxIntensity);
 		smoothQueue.Enqueue(newVal);
+		// Adds the new value to the base light value
 		lastSum += newVal;
-
+		// Updates the light intensity
 		light.intensity = lastSum/(float)smoothQueue.Count;
         
     }

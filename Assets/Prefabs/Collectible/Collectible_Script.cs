@@ -17,7 +17,8 @@ public class Collectible_Script : MonoBehaviour
         
     }
     void OnTriggerEnter2D(Collider2D collision){
-	
+	// If the player hitbox comes in contact with it will heal the player,
+	// play a sound effect and remove the collectible object
     	if(collision.gameObject.tag == "Player"){
 	    var player = collision.gameObject.GetComponent<PlayerMovement>();
             player.scoreCount += 100;

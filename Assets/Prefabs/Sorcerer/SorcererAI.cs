@@ -40,12 +40,15 @@ public class SorcererAI : MonoBehaviour{
 	    
 
 	    if(playerDetection.PlayerDetected){
+		    // Face Player if detected
 		if(playerDetection.DirectionToTarget.x < 0){
 		    spriteRenderer.flipX = true;
 		}
 		else{
 		    spriteRenderer.flipX = false;
 		}
+		
+		// Change trigger to fire fireball aniamtion when player detected
 		if(sAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle")){
 		    sAnimator.SetTrigger("TrAttack");
 		}
@@ -56,18 +59,22 @@ public class SorcererAI : MonoBehaviour{
     }
     
     void OnCollisionEnter2D(Collision2D other){
+	    // Player hit animation when hit and heath managment
 	sAnimator.SetTrigger("TrHit");
 	health--;
 	if(health == 0){
+		// Change animation to death animation
 	    sAnimator.SetTrigger("TrDeath");
 	}
     }
 
     void EnemyDeath(){
+	    // Used after death animation is complete to remove object
 	Destroy(gameObject);
     }
 
     void SpawnProjectile(){
+	    // Plays sound and spawns a fireball projectile at transform location depending on facing
 	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 0.6f);
 	if(spriteRenderer.flipX){
 

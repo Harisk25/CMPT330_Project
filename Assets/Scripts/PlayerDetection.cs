@@ -40,12 +40,14 @@ public class PlayerDetection : MonoBehaviour{
     private void Update(){
     }
 
+   // Coroutine that repeats after a certain time limit instead of on frame update 
+
     IEnumerator DetectionCoroutine(){
 	yield return new WaitForSeconds(detectionDelay);
 	PerformDetection();
 	StartCoroutine(DetectionCoroutine());
     }
-
+    // Finds the target based on the chosen layer and if object has a collider attatched
     public void PerformDetection(){
 	Collider2D collider = Physics2D.OverlapBox((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize, 0, detectorLayerMask);
 
@@ -56,7 +58,8 @@ public class PlayerDetection : MonoBehaviour{
 	    Target = null;
 	}
     }
-
+    
+    // Draws the detection gizmo and allows for colour change when and object is detected for visual feedback
     private void OnDrawGizmos(){
 	if(showGizmos && detectorOrigin != null){
 	    Gizmos.color = gizmoIdleColor;
