@@ -5,7 +5,7 @@ using UnityEngine;
 public class KeyScript : MonoBehaviour
 {
 	[SerializeField] private AudioClip collectSoundClip;
-	void OnTriggerEnter2D(Collider2D collision)
+	void OnTriggerEnter2D(Collider2D collision) // check if player collides with object so that player picks up item
 	{
 
 		if (collision.gameObject.tag == "Player")

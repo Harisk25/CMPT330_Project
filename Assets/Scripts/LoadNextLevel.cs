@@ -18,7 +18,7 @@ public class LoadNextLevel : MonoBehaviour
         PlayerCheck();
 
     }
-    private void PlayerCheck()
+    private void PlayerCheck() // once player collides with object change scenes
     {
         if (Physics2D.OverlapBox(playerCheckPos.position, playerCheckSize, 0, playerHitBoxLayer))
         {

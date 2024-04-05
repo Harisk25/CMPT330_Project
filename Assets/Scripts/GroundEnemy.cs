@@ -67,6 +67,7 @@ public class GroundEnemy : MonoBehaviour
         {
             Move();
         }
+        // set animation preamaters
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isAttacking", isAttacking);
         anim.SetBool("enemyInvincible", enemyInvincible);
@@ -124,10 +125,10 @@ public class GroundEnemy : MonoBehaviour
     private void Move()
     {
         Vector2 point = currentPoint.position - transform.position;
-        if (currentPoint == pointB.transform)
+        if (currentPoint == pointB.transform) // Move towards current point
         {
             rb.velocity = new Vector2(speed, 0);
-            if (isFacingRight == false)
+            if (isFacingRight == false) // flip enemy when not facing right
             {
                 Flip();
                 isFacingRight = true;

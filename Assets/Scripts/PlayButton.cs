@@ -22,7 +22,7 @@ public class PlayButton : MonoBehaviour
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit Hit;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // if mouse 1 clicks the play button start game
         {
             if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
             {
@@ -34,6 +34,6 @@ public class PlayButton : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene(sceneNumber);
+        SceneManager.LoadScene(sceneNumber); // load scene number allows to change to any scene wanted
     }
 }
