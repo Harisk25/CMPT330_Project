@@ -20,7 +20,7 @@ public class QuitButton : MonoBehaviour
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit Hit;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // if mouse 1 is clicked on quit button quit the application
         {
             if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
             {

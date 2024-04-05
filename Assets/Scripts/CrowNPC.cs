@@ -17,7 +17,7 @@ public class CrowNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerEntered == 1 && playerIsClose == true)
+        if(playerEntered == 1 && playerIsClose == true) // Player in range
         {
             if (dialoguePanel.activeInHierarchy)
             {
@@ -32,13 +32,13 @@ public class CrowNPC : MonoBehaviour
         }
     }
 
-    public void zeroText()
+    public void zeroText() // deletes text
     {
         dialogueText.text = "";
         dialoguePanel.SetActive(false);
     }
 
-    IEnumerator Typing()
+    IEnumerator Typing() // will simulate typing instead of just showing a full sentence 
     {
         foreach(char letter in dialogue.ToCharArray())
         {
@@ -47,21 +47,21 @@ public class CrowNPC : MonoBehaviour
                 break;
             }
             dialogueText.text += letter;
-            yield return new WaitForSeconds(wordSpeed);
+            yield return new WaitForSeconds(wordSpeed); // wait before adding next character
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) // if player enters area, start text
     {
         if (other.CompareTag("Player"))
         {
             playerIsClose = true;
-            playerEntered = 1;
+            playerEntered = 1; // marked as entered so that the text can type
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) // player left area, stop typing
         {
             playerIsClose = false;
             zeroText();

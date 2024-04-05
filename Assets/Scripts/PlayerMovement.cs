@@ -97,9 +97,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         scoreText.text = "" + Mathf.Round(scoreCount);
-        for (int i = 0; i < hearts.Length; i++)
+        for (int i = 0; i < hearts.Length; i++) // to display hearts on UI interface for player
         {
-            if(i < playerHP)
+            if(i < playerHP) // display hearts based on health
             {
                 hearts[i].sprite = fullHeart;
             }
@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
                 hearts[i].sprite = emptyHeart;
             }
 
-            if (i < numOfHearts)
+            if (i < numOfHearts) // number of hearts to display
             {
                 hearts[i].enabled = true;
             }
@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
-        if(wallPowerupActive == true)
+        if(wallPowerupActive == true) // display power up glove when picked up
         {
             wallGlove.enabled = true;
         }
@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         {
             wallGlove.enabled = false;
         }
-        if (hasKey == true)
+        if (hasKey == true) // display key when picked up
         {
             key.enabled = true;
         }
@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
             key.enabled = false;
         }
 
-        if (isDead == false)
+        if (isDead == false) // check if dead so player cant move after dying
         {
             ProcessGravity();
             GroundCheck();
@@ -154,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ProcessDeath();
         }
+        // set animation variables for animation
         animator.SetFloat("AirSpeedY", rb.velocity.y);
         animator.SetFloat("magnitude", rb.velocity.magnitude);
         animator.SetBool("Grounded", isGrounded);
