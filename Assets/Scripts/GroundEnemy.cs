@@ -246,14 +246,14 @@ public class GroundEnemy : MonoBehaviour
     }
 
     public void PlayAttackSound(){
-	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 0.7f);
+	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 0.3f);
     }
 
     public void PlayHitSound(){
-    	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.5f);
+    	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.3f);
     }
     public void PlayDeathSound(){
-    	SoundFXManager.instance.PlaySoundFXClip(deathSoundClip, transform, 0.5f);
+    	SoundFXManager.instance.PlaySoundFXClip(deathSoundClip, transform, 0.3f);
     }
 
 }

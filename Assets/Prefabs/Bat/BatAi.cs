@@ -132,8 +132,8 @@ public class BatAi : MonoBehaviour{
     void OnTriggerEnter2D(Collider2D other){
 	// Plays hit sounds, causes animation to flash for a short time and stops movement
 	// when hit with player sword
-	SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.4f);
-	SoundFXManager.instance.PlaySoundFXClip(damage2SoundClip, transform, 0.7f);
+	SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.05f);
+	SoundFXManager.instance.PlaySoundFXClip(damage2SoundClip, transform, 0.05f);
 	StartCoroutine(Flash());
 	health--;
 	StartCoroutine(GotHit());

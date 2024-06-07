@@ -25,7 +25,7 @@ public class Collectible_Script : MonoBehaviour
 	    if(player.playerHP < 4){
 	    	player.playerHP += 1;
 	    }
-	    SoundFXManager.instance.PlaySoundFXClip(collectSoundClip, transform, 0.7f);
+	    SoundFXManager.instance.PlaySoundFXClip(collectSoundClip, transform, 0.3f);
 	    Destroy(gameObject);
 	}
 

@@ -87,9 +87,9 @@ public class SorcererAI : MonoBehaviour{
     }
 
     public void PlayHitSound(){
-    	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.5f);
+    	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.3f);
     }
     public void PlayDeathSound(){
-    	SoundFXManager.instance.PlaySoundFXClip(deathSoundClip, transform, 0.8f);
+    	SoundFXManager.instance.PlaySoundFXClip(deathSoundClip, transform, 0.3f);
     }
 }

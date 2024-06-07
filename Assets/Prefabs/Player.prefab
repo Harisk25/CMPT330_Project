@@ -517,7 +517,7 @@ MonoBehaviour:
   playerBox: {fileID: 4318783211811308682}
   playerHP: 4
   playerInvincbleTime: 0.8
-  wallPowerupActive: 0
+  wallPowerupActive: 1
   hasKey: 0
   numOfHearts: 4
   hearts:
@@ -531,7 +531,7 @@ MonoBehaviour:
   key: {fileID: 0}
   scoreCount: 0
   scoreText: {fileID: 0}
-  moveSpeed: 10
+  moveSpeed: 15
   jumpPower: 20
   maxJumps: 1
   groundCheckPos: {fileID: 6354140674541379113}

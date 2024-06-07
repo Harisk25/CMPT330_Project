@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     //Wall Jumping
     bool isWallJumping;
     float wallJumpDirection;
-    float wallJumpTime = 0.5f;
+    float wallJumpTime = 0.4f;
     float wallJumpTimer;
     public Vector2 wallJumpPower = new Vector2(5f, 10f);
 
@@ -486,11 +486,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void PlayAttackSound(){
-	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 1f);     
+	SoundFXManager.instance.PlaySoundFXClip(attackSoundClip, transform, 0.6f);     
     }
 
     public void PlayJumpSound(){
-	SoundFXManager.instance.PlaySoundFXClip(jumpSoundClip, transform, 1f);     
+	SoundFXManager.instance.PlaySoundFXClip(jumpSoundClip, transform, 0.6f);     
     }
 
 

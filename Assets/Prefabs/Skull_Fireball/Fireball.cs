@@ -54,7 +54,7 @@ public class Fireball : MonoBehaviour
 
     void ObjectHit(){
 	    // Plays the explosion sound and removes projectile
-	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.7f);
+	SoundFXManager.instance.PlaySoundFXClip(hitSoundClip, transform, 0.3f);
 	Destroy(gameObject);
     }
 }
