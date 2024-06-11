@@ -143,7 +143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -530.2992, y: 64.00006}
+  m_AnchoredPosition: {x: -530.2992, y: 965}
   m_SizeDelta: {x: 240.136, y: 261.3148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2555950709279640115
@@ -218,7 +218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -338.1903, y: 64.00006}
+  m_AnchoredPosition: {x: -861, y: 64.00006}
   m_SizeDelta: {x: 240.136, y: 261.3148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2870606133164113305
@@ -293,7 +293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -770.4352, y: 64.00006}
+  m_AnchoredPosition: {x: -770.4352, y: 965}
   m_SizeDelta: {x: 240.136, y: 261.3148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2569612353687114985
@@ -368,7 +368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -650.3672, y: 64.00006}
+  m_AnchoredPosition: {x: -650.3672, y: 965}
   m_SizeDelta: {x: 240.136, y: 261.3148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3087707234038314025
@@ -443,7 +443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -890.5033, y: 64.00006}
+  m_AnchoredPosition: {x: -890.5033, y: 965}
   m_SizeDelta: {x: 240.136, y: 261.3148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4243494913561867181
@@ -518,7 +518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -215.48093, y: 68.703735}
+  m_AnchoredPosition: {x: -737, y: 68.703735}
   m_SizeDelta: {x: 240.136, y: 261.3148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3722955497729781035

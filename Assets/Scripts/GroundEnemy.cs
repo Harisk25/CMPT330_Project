@@ -8,6 +8,7 @@ public class GroundEnemy : MonoBehaviour
     private Animator anim;
     private Transform currentPoint;
     public BoxCollider2D enemyBox;
+    public SimpleFlash flashDamage;
 
     [Header("EnemyStats")]
     public int enemyHP = 2;
@@ -87,6 +88,7 @@ public class GroundEnemy : MonoBehaviour
             enemyInvincbleTimer = enemyInvincbleTime;
             rb.velocity = new Vector2(0, 0);
             isWalking = false;
+            flashDamage.Flash();
             if (enemyHP <= 0)
             {
                 anim.SetTrigger("Death");

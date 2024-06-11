@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 2352750468934741401}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.000015, y: 2, z: 0}
+  m_LocalPosition: {x: -24.99, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 2659101648098846268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.020004272, y: 2, z: 0}
+  m_LocalPosition: {x: 11.06, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 312570042462495653}
   - component: {fileID: 2468284001039064059}
   - component: {fileID: 1842261389271938213}
+  - component: {fileID: 362989492976178688}
   m_Layer: 7
   m_Name: Wolf
   m_TagString: Untagged
@@ -236,7 +237,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 145298734, guid: 7c2f5215da7fe234aab65228afb1848b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -333,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBox: {fileID: 312570042462495653}
+  flashDamage: {fileID: 362989492976178688}
   enemyHP: 2
   enemyInvincbleTime: 0.8
   playerCheckPos: {fileID: 3102619333333640064}
@@ -372,3 +374,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &362989492976178688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8791419246105386732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d594b05c64c564086dde742ad29192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 6dfb638b069e24f449be72ab4528cfff, type: 2}
+  duration: 0.1

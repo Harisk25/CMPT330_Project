@@ -8,8 +8,9 @@ public class SorcererAI : MonoBehaviour{
     private Animator sAnimator;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D hitBox;
-    
-    [Header ("Stats")]
+	public SimpleFlash flashDamage;
+
+	[Header ("Stats")]
     public int health = 3;
     public float invincibleTime = 0.7f;
     public GameObject Fireball;
@@ -62,6 +63,7 @@ public class SorcererAI : MonoBehaviour{
 	    // Player hit animation when hit and heath managment
 	sAnimator.SetTrigger("TrHit");
 	health--;
+	flashDamage.Flash();
 	if(health == 0){
 		// Change animation to death animation
 	    sAnimator.SetTrigger("TrDeath");

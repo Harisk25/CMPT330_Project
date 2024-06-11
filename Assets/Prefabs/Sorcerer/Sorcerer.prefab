@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3291763293700346786}
   - component: {fileID: 8831566968118273806}
   - component: {fileID: 2500098681058631545}
+  - component: {fileID: 6449024918625367898}
   m_Layer: 7
   m_Name: Sorcerer
   m_TagString: Untagged
@@ -147,7 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c5241210f33a84d8f05c9692daaa4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  flashDamage: {fileID: 6449024918625367898}
+  health: 2
   invincibleTime: 0.7
   Fireball: {fileID: 564058607359948087, guid: ebcbcc51a6d40bb4ebcea7e6c055c4e9, type: 3}
   fireballSpawn1: {fileID: 4152682676196856416}
@@ -167,17 +169,17 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 383
-  m_LayerOverridePriority: 9
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -200,6 +202,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5485104, y: 2.7754118}
   m_EdgeRadius: 0
+--- !u!114 &6449024918625367898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382765257166908784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d594b05c64c564086dde742ad29192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 6dfb638b069e24f449be72ab4528cfff, type: 2}
+  duration: 0.1
 --- !u!1 &3461378207979702836
 GameObject:
   m_ObjectHideFlags: 0

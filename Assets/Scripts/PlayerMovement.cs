@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sounds")]
     public AudioClip attackSoundClip;
     public AudioClip jumpSoundClip;
-
+    public AudioClip hurtSoundEffect;
 
     // Update is called once per frame
     void Update()
@@ -321,9 +321,17 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Hurt");
             playerInvincible = true;
             playerInvincbleTimer = playerInvincbleTime;
-            Debug.Log("Player Getting Hit ");
+            PlayHurtSound();
+            if (GetComponent<PlayerInput>().currentControlScheme == "Gamepad")
+            {
+                RumbleManager.instance.RumblePulse(0.5f, 1f, 0.25f);
+            }
             if(playerHP <= 0)
             {
+                if (GetComponent<PlayerInput>().currentControlScheme == "Gamepad")
+                {
+                    RumbleManager.instance.RumblePulse(1f, 1f, 2f);
+                }
                 animator.SetTrigger("Death");
                 isDead = true;
                 changeTimer = changeTime;
@@ -491,6 +499,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void PlayJumpSound(){
 	SoundFXManager.instance.PlaySoundFXClip(jumpSoundClip, transform, 0.6f);     
+    }
+
+    public void PlayHurtSound()
+    {
+        SoundFXManager.instance.PlaySoundFXClip(hurtSoundEffect, transform, 0.5f);
     }
 
 

@@ -7,18 +7,21 @@ public class Boss : MonoBehaviour
     public Transform playerLocation;
     public Transform bossLocation;
     Rigidbody2D rb;
+    public SimpleFlash flashDamage;
     public BoxCollider2D boxCollider;
+    public BoxCollider2D physicBox;
     public Animator animator;
     public CapsuleCollider2D hitBoxSword;
     public LayerMask playerLayer;
     public bool playerEnter = false;
-    bool isMoving = false;
+    public GameObject door;
+    public GameObject key;
     public int health = 24;
+    bool dead = false;
     bool inContactWithPlayer = false;
     bool enemyInvincible = false;
     float enemyInvincbleTimer;
     public float enemyInvincbleTime = 4f;
-    bool isDead = false;
     public int stage = 1;
     public int fStage2 = 1;
     public int fStage3 = 1;
@@ -29,12 +32,15 @@ public class Boss : MonoBehaviour
     float waitTime = 2f;
     float waitTimer;
 
+    [Header("UI")]
+    public Animator animatorUI;
+
     [Header("Attack1")]
     public Transform playerDetectionPosA1;
     public Vector2 playerDetectionSizeA1 = new Vector2(0.5f, 0.05f);
     bool playerDetected;
     int numberOfAttacks = 0;
-    
+
     [Header("SlideAttack")]
     bool noFlip = false;
     int numberOfSlides = 2;
@@ -56,9 +62,14 @@ public class Boss : MonoBehaviour
     public SpriteRenderer trackerSprite;
     float trackerTime = 5f;
     float trackerTimer;
-    float airTime = 1f;
+    float airTime = 0.1f;
     float airTimer;
+    float animTime = 1f;
+    float animTimer;
+    bool anim = true;
     bool airAttack = false;
+
+    public AudioClip hurtSoundEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,68 +82,88 @@ public class Boss : MonoBehaviour
     {
         if (playerEnter == true)
         {
-            if (playerLocation.position.x < bossLocation.position.x && facingRight == true && noFlip == false)
+            if (dead == false)
             {
-                Flip();
-                facingRight = false;
-            }
-            else if (playerLocation.position.x > bossLocation.position.x && facingRight == false && noFlip == false)
-            {
-                Flip();
-                facingRight = true;
-            }
-            if (wait == 0 && cycle == 0)
-            {
-                if (setAttack == 0)
+                if (playerLocation.position.x < bossLocation.position.x && facingRight == true && noFlip == false)
                 {
-                    AttackOne();
-                    
+                    Flip();
+                    facingRight = false;
                 }
-                else if (setAttack == 1)
+                else if (playerLocation.position.x > bossLocation.position.x && facingRight == false && noFlip == false)
                 {
-                    AttackTwo();
-                    
+                    Flip();
+                    facingRight = true;
                 }
-            }
-            else if (cycle == 1 && wait == 0 && stage == 2)
-            {
-                SlideAttack();
-                ProcessSlideWait();
-                ProcessSlideWaitOverall();
-                FlipSlide();
-            }
-            else if (cycle == 2 && wait == 0 && stage == 3)
-            {
-                AirAttack();
-                ProcessTracker();
-                ProcessAirTime();
+                if (wait == 0 && cycle == 0)
+                {
+                    if (setAttack == 0)
+                    {
+                        AttackOne();
+
+                    }
+                    else if (setAttack == 1)
+                    {
+                        AttackTwo();
+
+                    }
+                    else if (setAttack == 2)
+                    {
+                        AttackThree();
+
+                    }
+                }
+                else if (cycle == 1 && wait == 0 && stage >= 2)
+                {
+                    SlideAttack();
+                    ProcessSlideWait();
+                    ProcessSlideWaitOverall();
+                    FlipSlide();
+                }
+                else if (cycle == 2 && wait == 0 && stage >= 3)
+                {
+
+                    AirAttack();
+                    ProcessTracker();
+                    ProcessAirTime();
+                }
+                else
+                {
+
+                    ProcessWait();
+                }
+
+                if (numberOfAttacks == 3 && stage >= 2)
+                {
+                    cycle++;
+                    numberOfAttacks = 0;
+                }
+                else if (numberOfAttacks >= 3)
+                {
+                    numberOfAttacks = 0;
+                }
+                if (cycle >= maxCycles)
+                {
+                    cycle = 0;
+                }
+                ProcessAnimWait();
+                ProcessStages();
+                PlayerDetectionCheck();
+                ProcessEnemyInvincble();
+                GettingHit();
+                animator.SetFloat("Moving", rb.velocity.magnitude);
+                animator.SetBool("isDead", dead);
             }
             else
             {
+                animatorUI.SetTrigger("3H");
+                rb.bodyType = RigidbodyType2D.Static;
+                physicBox.enabled = false;
+                boxCollider.enabled = false;
+                hitBoxSword.enabled = false;
+                door.SetActive(true);
+                
 
-                ProcessWait();
             }
-            
-            if(numberOfAttacks == 3 && stage == 2)
-            {
-                cycle++;
-                numberOfAttacks = 0;
-            }
-            else if(numberOfAttacks == 3)
-            {
-                numberOfAttacks = 0;
-            }
-            if (cycle >= maxCycles)
-            {
-                cycle = 0;
-            }
-            
-            ProcessStages();
-            PlayerDetectionCheck();
-            ProcessEnemyInvincble();
-            GettingHit();
-            animator.SetFloat("Moving", rb.velocity.magnitude);
-            Debug.Log(setAttack);
         }
     }
     void ProcessStages()
@@ -143,6 +174,7 @@ public class Boss : MonoBehaviour
 
             if (fStage2 == 1)
             {
+                animatorUI.SetTrigger("1H");
                 setAttack = 0;
                 enemyInvincbleTimer = enemyInvincbleTime + 1f;
                 fStage2 = 0;
@@ -151,13 +183,14 @@ public class Boss : MonoBehaviour
                 maxCycles = 2;
             }
 
-        } 
-        else if (health <= 12)
+        }
+        else if (health <= 12 && health > 0)
         {
             stage = 3;
 
             if (fStage3 == 1)
             {
+                animatorUI.SetTrigger("2H");
                 setAttack = 0;
                 enemyInvincbleTimer = enemyInvincbleTime + 1f;
                 fStage3 = 0;
@@ -165,6 +198,11 @@ public class Boss : MonoBehaviour
                 numberOfAttacks = 0;
                 maxCycles = 3;
             }
+        }else if( health <= 0)
+        {
+            dead = true;
+            key.SetActive(true);
+            animator.SetTrigger("Dead");
         }
     }
 
@@ -172,14 +210,15 @@ public class Boss : MonoBehaviour
     {
         if (inContactWithPlayer == true && enemyInvincible == false)
         {
+            flashDamage.Flash();
             health--;
             enemyInvincible = true;
             inContactWithPlayer = false;
             enemyInvincbleTimer = enemyInvincbleTime;
+            PlayHurtSound();
             rb.velocity = new Vector2(0, 0);
             if (health <= 0)
             {
-                isDead = true;
                 enemyInvincbleTimer += 0.5f;
                 rb.gravityScale = 0;
             }
@@ -193,15 +232,13 @@ public class Boss : MonoBehaviour
     {
         if (enemyInvincible == true && enemyInvincbleTimer > 0f)
         {
+            inContactWithPlayer = false;
             enemyInvincbleTimer -= Time.deltaTime;
         }
         else if (enemyInvincbleTimer <= 0f)
         {
             enemyInvincible = false;
-            if (isDead == true)
-            {
-                Destroy(gameObject);
-            }
+            
         }
 
     }
@@ -220,13 +257,13 @@ public class Boss : MonoBehaviour
         Vector2 target = (playerLocation.position - bossLocation.position).normalized;
         Vector2 move = new Vector2(target.x, 0) * speed;
         rb.velocity = move;
-        if(playerDetected == true)
+        if (playerDetected == true)
         {
             if (stage >= 2)
             {
                 setAttack = 1;
             }
-            rb.velocity = new Vector2(0,0);
+            rb.velocity = new Vector2(0, 0);
             Debug.Log("called");
             animator.SetTrigger("Attack1");
             numberOfAttacks++;
@@ -242,12 +279,35 @@ public class Boss : MonoBehaviour
         rb.velocity = move;
         if (playerDetected == true)
         {
-            setAttack = 0;
+            if (stage >= 3)
+            {
+                setAttack = 2;
+            }
+            else
+            {
+                setAttack = 0;
+            }
             rb.velocity = new Vector2(0, 0);
             Debug.Log("called");
             animator.SetTrigger("Attack2");
             numberOfAttacks++;
             waitTimer = waitTime;
+            wait = 1;
+        }
+    }
+    void AttackThree()
+    {
+        Vector2 target = (playerLocation.position - bossLocation.position).normalized;
+        Vector2 move = new Vector2(target.x, 0) * speed;
+        rb.velocity = move;
+        if (playerDetected == true)
+        {
+            setAttack = 0;
+            rb.velocity = new Vector2(0, 0);
+            Debug.Log("called");
+            animator.SetTrigger("Attack3");
+            waitTimer = waitTime;
+            numberOfAttacks++;
             wait = 1;
         }
     }
@@ -275,6 +335,14 @@ public class Boss : MonoBehaviour
             wait = 0;
 
         }
+    }
+    private void ProcessAnimWait()
+    {
+        if (animTimer > 0f) // attack timer has started
+        {
+            animTimer -= Time.deltaTime;
+        }
+        
     }
 
     private void ProcessSlideWait()
@@ -418,37 +486,48 @@ public class Boss : MonoBehaviour
     }
     private void AirAttack()
     {
+        if(anim == true)
+        {
+            rb.velocity = new Vector2(0, 0);
+            animTimer = animTime;
+            animator.SetTrigger("Pray");
+            anim = false;
+        }
         // tp to position -261, 49
-        if(needsTP == true)
+        if (animTimer < 0f)
         {
-            bossLocation.position = new Vector3(-261, 49, 45);
-            needsTP = false;
-            trackerSprite.enabled = true;
-            trackerTimer = trackerTime;
-        }
-        if (trackerTimer > 0f)
-        {
-            Vector2 target = (playerLocation.position - tracker.position).normalized;
-            Vector2 move = new Vector2(target.x, 0) * 200;
-            trackerRb.velocity = move;
-        }
-        else if (trackerTimer < 0f && airAttack == false) 
-        {
-            trackerRb.velocity = new Vector2(0, 0);
-            airTimer = airTime;
-            airAttack = true;
-        }
-        if(airAttack == true && airTimer <= 0f)
-        {
-            bossLocation.position = new Vector3(tracker.position.x, 35, 45);
-            animator.SetTrigger("AirAttack");
-            rb.gravityScale = 10f;
-            airAttack = false;
-            cycle++;
-            trackerSprite.enabled = false;
-            wait = 1;
-            waitTimer = waitTime + 2f;
-
+            if (needsTP == true)
+            {
+                bossLocation.position = new Vector3(-261, 49, 45);
+                needsTP = false;
+                trackerSprite.enabled = true;
+                trackerTimer = trackerTime;
+            }
+            else if (trackerTimer > 0f)
+            {
+                Vector2 target = (playerLocation.position - tracker.position).normalized;
+                Vector2 move = new Vector2(target.x, 0) * 200;
+                trackerRb.velocity = move;
+            }
+            else if (trackerTimer < 0f && airAttack == false)
+            {
+                trackerRb.velocity = new Vector2(0, 0);
+                airTimer = airTime;
+                airAttack = true;
+            }
+            else if (airAttack == true && airTimer <= 0f)
+            {
+                bossLocation.position = new Vector3(tracker.position.x, 35, 45);
+                animator.SetTrigger("AirAttack");
+                rb.gravityScale = 15f;
+                airAttack = false;
+                cycle++;
+                trackerSprite.enabled = false;
+                needsTP = true;
+                wait = 1;
+                waitTimer = waitTime + 1f;
+                anim = true;
+            }
         }
 
     }
@@ -468,5 +547,10 @@ public class Boss : MonoBehaviour
         //DetectionBox
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(playerDetectionPosA1.position, playerDetectionSizeA1);
+    }
+
+    public void PlayHurtSound()
+    {
+        SoundFXManager.instance.PlaySoundFXClip(hurtSoundEffect, transform, 0.5f);
     }
 }
