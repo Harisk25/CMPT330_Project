@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    [Header("PlayerStats")]
     public Transform playerLocation;
     public Transform bossLocation;
     Rigidbody2D rb;
