@@ -198,6 +198,9 @@ public class Boss : MonoBehaviour
                 cycle = 2;
                 numberOfAttacks = 0;
                 maxCycles = 3;
+                noFlip = false;
+                startSliding = false;
+                numberOfSlides = 2;
             }
         }else if( health <= 0)
         {

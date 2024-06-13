@@ -7087,19 +7087,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 353470060268678350, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 15.742
+      value: 15.874
       objectReference: {fileID: 0}
     - target: {fileID: 353470060268678350, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 7.3347
+      value: 8.4062
       objectReference: {fileID: 0}
     - target: {fileID: 353470060268678350, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 332.8795
+      value: 332.9455
       objectReference: {fileID: 0}
     - target: {fileID: 353470060268678350, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -68.38813
+      value: -67.852356
       objectReference: {fileID: 0}
     - target: {fileID: 929789676370644280, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7148,24 +7148,28 @@ PrefabInstance:
     - target: {fileID: 6370879078935518598, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: dialogue
       value: Oh! You found a Wall grabbing glove! We can get out of here! ( Holding
-        D or A against a wall when falling will let you wall slide, and if you press
-        Space you will wall jump)
+        D or A/Joystick against a wall when falling will let you wall slide, and
+        if you press Space or bottom face button you will wall jump)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370879078935518598, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
+      propertyPath: wordSpeed
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 7362528768563906916, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 15.742
+      value: 15.808
       objectReference: {fileID: 0}
     - target: {fileID: 7362528768563906916, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 7.1246
+      value: 8.4062
       objectReference: {fileID: 0}
     - target: {fileID: 7362528768563906916, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00011197
+      value: 0.032985
       objectReference: {fileID: 0}
     - target: {fileID: 7362528768563906916, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.10506
+      value: -0.0000095963
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15902,7 +15906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6370879078935518598, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: dialogue
-      value: Platforms! (Use space to jump)
+      value: Platforms! (Use space or bottom face button to jump)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16040,7 +16044,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6370879078935518598, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: dialogue
-      value: An enemy! Defeat them! (Use J to attack, you can chain an attack 3 times)
+      value: An enemy! Defeat them! (Use J or left face button to attack, you can
+        chain an attack 3 times)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -103813,7 +103818,7 @@ PrefabInstance:
     - target: {fileID: 6370879078935518598, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: dialogue
       value: Hello Grey Knight, follow the tourches, they lead the path. (Use A or
-        D to Move Left or Right)
+        D/Right joystick to Move Left or Right)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

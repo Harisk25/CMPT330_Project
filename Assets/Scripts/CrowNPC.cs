@@ -17,7 +17,7 @@ public class CrowNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerEntered == 1 && playerIsClose == true) // Player in range
+        if (playerEntered == 1 && playerIsClose == true) // Player in range
         {
             if (dialoguePanel.activeInHierarchy)
             {
