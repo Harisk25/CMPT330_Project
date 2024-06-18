@@ -15630,7 +15630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6370879078935518598, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: dialogue
-      value: The entrance to the cave! Now the real challange begins, prepare yourself
+      value: The entrance to the cave! Now the real challenge begins, prepare yourself
         Grey Knight!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -103818,7 +103818,7 @@ PrefabInstance:
     - target: {fileID: 6370879078935518598, guid: 5330bbc1b5cd0074bb0e97aa2f0f044e, type: 3}
       propertyPath: dialogue
       value: Hello Grey Knight, follow the tourches, they lead the path. (Use A or
-        D/Right joystick to Move Left or Right)
+        D/Left joystick to Move Left or Right)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
