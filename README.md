@@ -22,7 +22,7 @@ All sprites & assets were found using Unity asset store and itch.io
 
 <h2>How to play</h2>
 
-There is a zip file called finalBuild.zip, this is the last and most recent build of this game which you can download and play or you can check out the itch.io page (Coming soon)! Further development has been taken to a private repo as more effort and custom made sprites will be put into the game in hopes of a release of the game! Thank you for trying out the game!
+There is a zip file called finalBuild.zip, this is the last and most recent build of this game which you can download and play or you can check out the [itch.io page](https://hexko.itch.io/vow-of-the-grey-knight)! Further development has been taken to a private repo as more effort and custom made sprites will be put into the game in hopes of a release of the game! Thank you for trying out the game!
 
 
 
