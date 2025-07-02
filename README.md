@@ -2,7 +2,7 @@
 
 <h2>Game Overview</h2>
 
-This game is inspired by metroidvania's (esspically castlevaina) due to the style and diffuclt gameplay. In Vow of The Grey Knight you play as the Grey Knight and are tasked to defeat the evil within the cave. In this version there are only Three levels, The tutorial, and level 1, and a boss level. Be sure to listen to your Crow companion as they will help you learn the controls of the game as well as hint towards items/paths. This game utilizes Unity new input system, animator, Unity Physics, gizmos, and simple scripted AI.
+This game is inspired by metroidvania's (especially​ castlevaina) due to the style and difficult gameplay. In Vow of The Grey Knight you play as the Grey Knight and are tasked to defeat the evil within the cave. In this version there are only Three levels, The tutorial, and level 1, and a boss level. Be sure to listen to your Crow companion as they will help you learn the controls of the game as well as hint towards items/paths. This game utilizes Unity new input system, animator, Unity Physics, gizmos, and simple scripted AI.​
 
 <b>Lore</b>
 
